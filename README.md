@@ -34,4 +34,29 @@
 ## 깃 리포지토리 안에 백엔드 우클릭 - remote - fetch(자주 해주세요)
 ![image](https://github.com/final-1-joe/Backend/assets/126868160/e7b11cd3-5091-4dc7-88f2-8cfe46e4e170)
 # 2. 브렌치 옮기는법
-## 깃 리포지토리 안에 백엔드 우클릭 - switch to
+## 깃 리포지토리 안에 백엔드 우클릭 - switch to - Other 이후 remote tracking 열기
+![image](https://github.com/final-1-joe/Backend/assets/126868160/3c56048a-e04b-4b39-a075-74228ebfdff5)
+## 더블 클릭
+![image](https://github.com/final-1-joe/Backend/assets/126868160/d393383c-5aba-4e1e-996e-2c26fba487ba)
+## check out as new Local Branch(데이터가 날라가지 않도록 최대한 자신이 한것 커밋 후 브렌치를 옮겨주세요)
+![image](https://github.com/final-1-joe/Backend/assets/126868160/eaa061c3-3fde-4dcb-91d7-f384e2751640)
+## finish 클릭
+![image](https://github.com/final-1-joe/Backend/assets/126868160/847b1194-a183-452e-b77f-b3af0986edf0)
+## 이제 git repository local 안에 새로운 브렌치가 생성되었고, 여기에서 더블클릭을 사용하시면 브렌치를 옮기실 수 있습니다
+## local내부에 있는 브렌치는 마음대로 삭제 가능합니다. 삭제후 깃풀받아 새 브렌치를 리모트해 가져오실수도 있습니다
+![image](https://github.com/final-1-joe/Backend/assets/126868160/e55a4851-81df-4525-b277-7f2f832cce96)
+
+# 3. commit 하는법!!
+## 연습용 testJava를 만들어 보았습니다
+![image](https://github.com/final-1-joe/Backend/assets/126868160/fa3c2e04-30b3-4deb-8d05-34a439d45753)
+## 맨위 상단 1번과 2번을 하시고, 깃을 들어오신다음, git Staging를 누르시면 이미지와 같이 나옵니다
+![image](https://github.com/final-1-joe/Backend/assets/126868160/e23f898d-e245-403c-a93b-c0edac2a9a02)
+## 플러스를 누르시고, 커밋 메시지를 적으시고 커밋 앤 푸시를 누르시면 됩니다(하기전 브렌치 꼭 확인!!)
+![image](https://github.com/final-1-joe/Backend/assets/126868160/1a6e5a77-e634-424a-8a48-361f8368b66a)
+## configure를 클릭
+![image](https://github.com/final-1-joe/Backend/assets/126868160/8101e209-d516-4deb-844b-7bd5207d5ea5)
+## save and push를 클릭
+![image](https://github.com/final-1-joe/Backend/assets/126868160/6105084d-d876-40b3-b6eb-324d5a3352e9)
+## 완료! 이제 깃허브 브렌치에서 업데이트 되었나 확인하세요
+
+
