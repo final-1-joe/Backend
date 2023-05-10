@@ -9,3 +9,6 @@
 
 # 2. git 클릭
 ![image](https://github.com/final-1-joe/Backend/assets/126868160/930d751c-b9f3-4b9c-81ad-ae035ddc142b)
+
+# 3. clone git repository 클릭
+![image](https://github.com/final-1-joe/Backend/assets/126868160/8f02b7c8-1963-4de9-aaf6-57260185d379)
