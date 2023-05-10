@@ -29,3 +29,9 @@
 # 그 후!!!! file - open project에서 해당경로(예 : project에 git-sts4)에서 Backend\final-backend 까지 들어가 경로설정하기
 # 그래야 maven으로 인식합니다.
 ![image](https://github.com/final-1-joe/Backend/assets/126868160/1c7a1feb-fa4d-4e9c-8c6f-13f2ecb44265)
+# 여기까지 완료 하였다면 깃허브랑 연동은 완료!
+# 1. git pull 하는 법
+## 깃 리포지토리 안에 백엔드 우클릭 - remote - fetch(자주 해주세요)
+![image](https://github.com/final-1-joe/Backend/assets/126868160/e7b11cd3-5091-4dc7-88f2-8cfe46e4e170)
+# 2. 브렌치 옮기는법
+## 깃 리포지토리 안에 백엔드 우클릭 - switch to
