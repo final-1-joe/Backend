@@ -12,3 +12,7 @@
 
 # 3. clone git repository 클릭
 ![image](https://github.com/final-1-joe/Backend/assets/126868160/8f02b7c8-1963-4de9-aaf6-57260185d379)
+
+# 4. 코드 복사 후 붙여넣기
+![image](https://github.com/final-1-joe/Backend/assets/126868160/96eea202-f3c4-4765-aaed-89361f2299d7)
+> 토큰 access 설정 : https://hermeslog.tistory.com/467
