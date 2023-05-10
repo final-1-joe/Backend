@@ -4,5 +4,5 @@
 > https://backendcode.tistory.com/188  
 > https://powernote.tistory.com/40  
 > https://dev-hanryangee.tistory.com/32?category=1028777  
-![image](https://github.com/final-1-joe/Backend/assets/126868160/65a58821-9796-4e4c-97cf-7f8c100b189f)
->1. 
+![image](https://github.com/final-1-joe/Backend/assets/126868160/a94fb23a-3173-4198-b9d5-71c665aca3de)
+# 1. window - perspective - open perspective - other 클릭
