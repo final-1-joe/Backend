@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class CalVo {
+	private String schedulekey;
 	private String userid;
 	private String schedule_title;
 	private String schedule_content;
