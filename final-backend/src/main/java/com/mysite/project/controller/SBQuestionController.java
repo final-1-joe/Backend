@@ -13,7 +13,7 @@ import com.mysite.project.vo.SBQuestionVO;
 
 @RequestMapping("/support/board")
 @RestController
-public class SBQuestionController<AnswerForm> {
+public class SBQuestionController {
 	
 	private SBQuestionService sbquestionService;
 	

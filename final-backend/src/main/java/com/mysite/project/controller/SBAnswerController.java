@@ -11,7 +11,7 @@ import com.mysite.project.vo.SBAnswerVO;
 
 @RequestMapping("/support/answer")
 @RestController
-public class SBAnswerController<AnswerForm> {
+public class SBAnswerController {
 	
 	private SBAnswerService sbanswerService;
 	private SBQuestionService sbquestionService;

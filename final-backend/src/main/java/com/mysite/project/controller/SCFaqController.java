@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mysite.project.service.SCFaqService;
 import com.mysite.project.vo.SCFaqVO;
 
-
 @RequestMapping("/support/faq")
 @RestController
-public class SCFaqController<AnswerForm> {
+public class SCFaqController {
 	
 	private SCFaqService scfaqService;
 
