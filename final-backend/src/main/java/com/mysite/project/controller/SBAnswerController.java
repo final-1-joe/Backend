@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mysite.project.service.SBAnswerService;
-import com.mysite.project.service.SBQuestionService;
 import com.mysite.project.vo.SBAnswerVO;
 
 
@@ -14,7 +13,6 @@ import com.mysite.project.vo.SBAnswerVO;
 public class SBAnswerController {
 	
 	private SBAnswerService sbanswerService;
-	private SBQuestionService sbquestionService;
 	
 	public SBAnswerController(SBAnswerService sbanswerService) {
 		this.sbanswerService = sbanswerService;
