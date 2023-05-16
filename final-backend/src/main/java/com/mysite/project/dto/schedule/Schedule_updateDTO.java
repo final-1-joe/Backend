@@ -1,14 +1,12 @@
-package com.mysite.project.vo;
+package com.mysite.project.dto.schedule;
 
 import lombok.Data;
 
 @Data
-public class CalVo {
-	private String schedulekey;
-	private String userid;
+public class Schedule_updateDTO {
 	private String schedule_title;
 	private String schedule_content;
 	private String schedule_start;
 	private String schedule_end;
-	private boolean schedule_open;
+	private String schedule_key;
 }

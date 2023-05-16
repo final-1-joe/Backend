@@ -8,26 +8,29 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.mysite.project.vo.CalVo;
+import com.mysite.project.dto.schedule.Schedule_deleteDTO;
+import com.mysite.project.dto.schedule.Schedule_insertDTO;
+import com.mysite.project.dto.schedule.Schedule_updateDTO;
+import com.mysite.project.vo.schedule.CalVo;
 
 @Mapper
 public interface CalMapper {
 	
-	@Insert("insert into schedule(userid, schedule_title, schedule_content, schedule_start, schedule_end)"
-			+ " values (#{userid}, #{schedule_title}, #{schedule_content}, #{schedule_start},"
-			+ " #{schedule_end}")
-	public void insertSchedule(CalVo vo);
+	@Insert("insert into schedule_db(user_id, schedule_title, schedule_content, schedule_start, schedule_end, schedule_color)"
+			+ " values (#{user_id}, #{schedule_title}, #{schedule_content}, #{schedule_start},"
+			+ " #{schedule_end}, #{schedule_color})")
+	public void insertSchedule(Schedule_insertDTO insertdto);
 	
-	@Select("select * from schedule where userid=#{userid} order by schedule_start")
+	@Select("select * from schedule_db where user_id=#{user_id} order by schedule_start")
 	List<CalVo> getScheduleList(CalVo vo);
 	
-	@Update("update schedule set schedule_title=#{schedule_title}, schedule_content=#{schedule_content}, "
-			+ "schedule_start=#{schedule_start}, schedule_end=#{schedule_end} where userid=#{userid}"
-			+ " and schedulekey=#{schedulekey}")
-	public void updateSchedule(CalVo vo);
+	@Update("update schedule_db set schedule_title=#{schedule_title}, schedule_content=#{schedule_content}, "
+			+ "schedule_start=#{schedule_start}, schedule_end=#{schedule_end} "
+			+ "where schedule_key=#{schedule_key}")
+	public void updateSchedule(Schedule_updateDTO updatedto);
 	
-	@Delete("delete schedule where where userid=#{userid} and schedulekey=#{schedulekey}")
-	public void deleteSchedule(CalVo vo);
+	@Delete("delete from schedule_db where schedule_key=#{schedule_key}")
+	public void deleteSchedule(Schedule_deleteDTO deletedto);
 	
 	
 	
