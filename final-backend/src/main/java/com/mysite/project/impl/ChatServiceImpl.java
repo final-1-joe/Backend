@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mysite.project.dto.chat.ChatDto;
+import com.mysite.project.mapper.ChatMapper;
+import com.mysite.project.service.ChatService;
+
 
 @Service
 public class ChatServiceImpl implements ChatService {

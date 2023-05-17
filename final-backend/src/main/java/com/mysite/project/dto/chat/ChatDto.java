@@ -1,4 +1,4 @@
-package com.mysite.project.dto;
+package com.mysite.project.dto.chat;
 
 import java.sql.Date;
 
