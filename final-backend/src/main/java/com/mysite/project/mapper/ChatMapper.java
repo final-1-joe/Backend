@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.mysite.project.dto.chat.ChatDto;
+
 @Mapper
 public interface ChatMapper {
 	
