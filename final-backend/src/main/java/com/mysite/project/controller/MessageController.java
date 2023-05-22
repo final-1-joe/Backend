@@ -28,7 +28,7 @@ public class MessageController {
 		public void sendMessage(@Payload ChatDto chatDto) throws Exception{
 			System.out.println("메시지" + chatDto);
 			chatService.insertMessage(chatDto); //db 저장
-			template.convertAndSend("/sub/1"/* + chatDto.getChatroom_id()*/, chatDto);
+			template.convertAndSend("/sub/"+ chatDto.getChatroom_id(), chatDto);
 		}
 		
 		// 사용자 로그인 아이디를 기반으로 참여중인 채팅방 조회 
@@ -42,5 +42,5 @@ public class MessageController {
 		public List<ChatDto> getchatmessage(@RequestBody ChatDto chatDto) throws Exception{
 			return chatService.getMessage(chatDto);
 		}
-
+		
 }
