@@ -27,12 +27,21 @@ public class SBQuestionController {
 	    List<SBQuestionVO> paging = this.sbquestionService.getList(pg.getPage(), pg.getLimit());
 	    return paging;
 	}
+	@RequestMapping("/adlist")
+	public List<SBQuestionVO> adlist(@RequestBody Pageing pg) {
+	    List<SBQuestionVO> paging = this.sbquestionService.getAdList(pg.getPage(), pg.getLimit());
+	    return paging;
+	}
 	
 	@RequestMapping("/count") 
 	public int getCount() { 
-		
 		int res = this.sbquestionService.getCount();
 		return res;
+	}
+	
+	@RequestMapping("/adcount") 
+	public int getAdCount() { 
+		return this.sbquestionService.getAdCount();
 	}
 	
 	@RequestMapping("/insert")

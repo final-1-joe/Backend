@@ -22,6 +22,11 @@ public class SBQuestionServiceImpl implements SBQuestionService {
 		List<SBQuestionVO> list = mapper.getSBQList(start, pageSize);
         return list;
     }
+	
+	@Override
+	public int getAdCount() {
+		return mapper.getAdCount();
+	}
 
 	@Override
 	public int getCount() {
@@ -54,5 +59,12 @@ public class SBQuestionServiceImpl implements SBQuestionService {
 		SBQuestionVO sbquesionVo = mapper.getSBA(sbquesion);
 		return sbquesionVo;
 	}
+	@Override
+	public List<SBQuestionVO> getAdList(int page, int pageSize) {
+		int start = (page - 1) * pageSize;
+		List<SBQuestionVO> list = mapper.getAdSBQList(start, pageSize);
+        return list;
+	}
+	
 
 }
