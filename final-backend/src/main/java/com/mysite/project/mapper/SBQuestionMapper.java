@@ -14,15 +14,14 @@ import com.mysite.project.vo.SBQuestionVO;
 @Mapper
 public interface SBQuestionMapper {
 	
-	//@Select("select * from sbquestion order by id desc limit #{start}, #{pageSize}")
-	//public List<SBQuestionVO> getSBQList(@Param("start") int start, @Param("pageSize") int pageSize);
 	List<SBQuestionVO> getSBQList(@Param("start") int start, @Param("pageSize") int pageSize);
 	
-
+	List<SBQuestionVO> getAdSBQList(@Param("start") int start, @Param("pageSize") int pageSize);
 
 	@Select("select count(*) as count from sbquestion")
 	public int getCount();
 	
+	public int getAdCount();
 	
 	@Insert("insert into sbquestion (sbqnum, sbqsubject, sbqcontent, sbqwriter,sbqcreateDate) "
 			+ "values (#{sbqnum}, #{sbqsubject}, #{sbqcontent},#{sbqwriter},now())")
