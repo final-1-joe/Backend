@@ -48,29 +48,7 @@ public class UserController {
 
         
 
-//        if (vo.user_id == null || user_pw == null || user_name == null || user_email == null || user_birth == null || user_tel == null) {
-//            result.put("success", false);
-//            result.put("message", "필수 입력 항목이 누락되었습니다.");
-//        } else {
-//            UserVO user = new UserVO();
-//            user.setUser_id(user_id);
-//            user.setUser_pw(user_pw);
-//            user.setUser_name(user_name);
-//            user.setUser_email(user_email);
-//            user.setUser_birth(user_birth);
-//            user.setUser_tel(user_tel);
-//
-//            int insertResult = userService.insertUser(user);
-//
-//            if (insertResult == 1) {
-//                result.put("success", true);
-//            } else {
-//                result.put("success", false);
-//                result.put("message", "사용자 정보 저장에 실패했습니다.");
-//            }
-//        }
 
-//        return result;
     }
 
 	
