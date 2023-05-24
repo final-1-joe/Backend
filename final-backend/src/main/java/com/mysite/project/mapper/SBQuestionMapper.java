@@ -38,5 +38,11 @@ public interface SBQuestionMapper {
 	
 	@Delete("delete from sbquestion where sbqnum=#{sbqnum}")
 	public int deleteSBQ(SBQuestionVO sbquesion);
+	
+	@Select("SELECT * FROM sbquestion WHERE sbqsubject LIKE CONCAT('%', #{sbqsubject}, '%')")
+	public List<SBQuestionVO> searchSubject(SBQuestionVO sbquesion);
+	
+	@Select("SELECT * FROM sbquestion WHERE sbqcontent LIKE CONCAT('%', #{sbqcontent}, '%')")
+	public List<SBQuestionVO> searchContent(SBQuestionVO sbquesion);
 
 }

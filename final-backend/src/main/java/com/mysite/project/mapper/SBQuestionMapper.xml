@@ -50,7 +50,7 @@
 FROM sbquestion q
 LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
 WHERE a.sbquestion_id IS NULL
-ORDER BY q.sbqnum DESC
+ORDER BY q.sbqnum ASC
 LIMIT #{start}, #{pageSize}
 </select>
 

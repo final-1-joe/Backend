@@ -14,4 +14,6 @@ public interface SBQuestionService {
 	public void insert(SBQuestionVO sbquesion);
 	public void update(SBQuestionVO sbquesion);
 	public void delete(SBQuestionVO sbquesion);
+	public List<SBQuestionVO> searchSubject(SBQuestionVO sbquesion);
+	public List<SBQuestionVO> searchContent(SBQuestionVO sbquesion);
 }
