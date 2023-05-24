@@ -40,7 +40,7 @@
   LIMIT #{start}, #{pageSize}
 </select>
 
-<select id="getAdSBQList" resultMap="sbQuestionResultMap">
+<select id="getNASBQList" resultMap="sbQuestionResultMap">
   SELECT q.*,
        a.sbanum AS answer_sbanum,
        a.sbaanswer AS answer_sbaanswer,
@@ -54,11 +54,32 @@ ORDER BY q.sbqnum ASC
 LIMIT #{start}, #{pageSize}
 </select>
 
-<select id="getAdCount" resultType="java.lang.Integer">
+<select id="getNACount" resultType="java.lang.Integer">
 SELECT COUNT(*) AS count
 FROM sbquestion q
 LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
 WHERE a.sbquestion_id IS NULL
+</select>
+
+<select id="getASBQList" resultMap="sbQuestionResultMap">
+  SELECT q.*,
+       a.sbanum AS answer_sbanum,
+       a.sbaanswer AS answer_sbaanswer,
+       a.sbawriter AS answer_sbawriter,
+       a.sbacreateDate AS answer_sbacreateDate,
+       a.sbquestion_id AS answer_sbquestion_id
+FROM sbquestion q
+LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+WHERE a.sbquestion_id IS NOT NULL
+ORDER BY q.sbqnum DESC
+LIMIT #{start}, #{pageSize}
+</select>
+
+<select id="getACount" resultType="java.lang.Integer">
+SELECT COUNT(*) AS count
+FROM sbquestion q
+LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+WHERE a.sbquestion_id IS NOT NULL
 </select>
 
 

@@ -16,12 +16,13 @@ public interface SBQuestionMapper {
 	
 	List<SBQuestionVO> getSBQList(@Param("start") int start, @Param("pageSize") int pageSize);
 	
-	List<SBQuestionVO> getAdSBQList(@Param("start") int start, @Param("pageSize") int pageSize);
-
+	List<SBQuestionVO> getNASBQList(@Param("start") int start, @Param("pageSize") int pageSize);
+	List<SBQuestionVO> getASBQList(@Param("start") int start, @Param("pageSize") int pageSize);
 	@Select("select count(*) as count from sbquestion")
 	public int getCount();
 	
-	public int getAdCount();
+	public int getNACount();
+	public int getACount();
 	
 	@Insert("insert into sbquestion (sbqnum, sbqsubject, sbqcontent, sbqwriter,sbqcreateDate) "
 			+ "values (#{sbqnum}, #{sbqsubject}, #{sbqcontent},#{sbqwriter},now())")
