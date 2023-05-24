@@ -27,9 +27,14 @@ public class SBQuestionController {
 	    List<SBQuestionVO> paging = this.sbquestionService.getList(pg.getPage(), pg.getLimit());
 	    return paging;
 	}
-	@RequestMapping("/adlist")
-	public List<SBQuestionVO> adlist(@RequestBody Pageing pg) {
-	    List<SBQuestionVO> paging = this.sbquestionService.getAdList(pg.getPage(), pg.getLimit());
+	@RequestMapping("/nalist")
+	public List<SBQuestionVO> nalist(@RequestBody Pageing pg) {
+	    List<SBQuestionVO> paging = this.sbquestionService.getNAList(pg.getPage(), pg.getLimit());
+	    return paging;
+	}
+	@RequestMapping("/alist")
+	public List<SBQuestionVO> alist(@RequestBody Pageing pg) {
+	    List<SBQuestionVO> paging = this.sbquestionService.getAList(pg.getPage(), pg.getLimit());
 	    return paging;
 	}
 	
@@ -39,9 +44,13 @@ public class SBQuestionController {
 		return res;
 	}
 	
-	@RequestMapping("/adcount") 
-	public int getAdCount() { 
-		return this.sbquestionService.getAdCount();
+	@RequestMapping("/nacount") 
+	public int getNACount() { 
+		return this.sbquestionService.getNACount();
+	}
+	@RequestMapping("/acount") 
+	public int getACount() { 
+		return this.sbquestionService.getACount();
 	}
 	
 	@RequestMapping("/insert")

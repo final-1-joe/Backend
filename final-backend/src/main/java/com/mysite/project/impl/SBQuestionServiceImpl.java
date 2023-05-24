@@ -24,8 +24,8 @@ public class SBQuestionServiceImpl implements SBQuestionService {
     }
 	
 	@Override
-	public int getAdCount() {
-		return mapper.getAdCount();
+	public int getNACount() {
+		return mapper.getNACount();
 	}
 
 	@Override
@@ -60,9 +60,9 @@ public class SBQuestionServiceImpl implements SBQuestionService {
 		return sbquesionVo;
 	}
 	@Override
-	public List<SBQuestionVO> getAdList(int page, int pageSize) {
+	public List<SBQuestionVO> getNAList(int page, int pageSize) {
 		int start = (page - 1) * pageSize;
-		List<SBQuestionVO> list = mapper.getAdSBQList(start, pageSize);
+		List<SBQuestionVO> list = mapper.getNASBQList(start, pageSize);
         return list;
 	}
 	@Override
@@ -72,6 +72,16 @@ public class SBQuestionServiceImpl implements SBQuestionService {
 	@Override
 	public List<SBQuestionVO> searchContent(SBQuestionVO sbquesion) {
 		return mapper.searchContent(sbquesion);
+	}
+	@Override
+	public List<SBQuestionVO> getAList(int page, int pageSize) {
+		int start = (page - 1) * pageSize;
+		List<SBQuestionVO> list = mapper.getASBQList(start, pageSize);
+        return list;
+	}
+	@Override
+	public int getACount() {
+		return mapper.getACount();
 	}
 	
 
