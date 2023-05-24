@@ -65,6 +65,14 @@ public class SBQuestionServiceImpl implements SBQuestionService {
 		List<SBQuestionVO> list = mapper.getAdSBQList(start, pageSize);
         return list;
 	}
+	@Override
+	public List<SBQuestionVO> searchSubject(SBQuestionVO sbquesion) {
+		return mapper.searchSubject(sbquesion);
+	}
+	@Override
+	public List<SBQuestionVO> searchContent(SBQuestionVO sbquesion) {
+		return mapper.searchContent(sbquesion);
+	}
 	
 
 }

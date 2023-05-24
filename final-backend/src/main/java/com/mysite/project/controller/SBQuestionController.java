@@ -73,5 +73,13 @@ public class SBQuestionController {
 
     }
 
-
+	@RequestMapping("/search/subject")
+    public List<SBQuestionVO> searchSubject(@RequestBody SBQuestionVO sbq) {
+        return sbquestionService.searchSubject(sbq);
+    }
+	    
+	@RequestMapping("/search/content")
+    public List<SBQuestionVO> searchContent(@RequestBody SBQuestionVO sbq) {
+        return sbquestionService.searchContent(sbq);
+    }
 }
