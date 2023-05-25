@@ -16,17 +16,17 @@ import com.mysite.project.vo.UserVO;
 				+ " values (#{user_id},#{user_pw},#{user_name},#{user_email},#{user_tel},#{user_code})")
 		public int insertUser(UserVO vo);
 		
-		@Select("select count(*) from user where id = #{user_id} and password = #{user_pw}")
-		public int userCheck(UserVO userVO);
-
-		@Select("select * from user order by user_id")
-		public ArrayList<UserVO> getUserlist();
+		@Select("select * from user_db where user_id = #{user_id}")
+		public UserVO getUserById(String user_id);
 		
-		@Select("select * from user where id = #{user_id}")
-		public UserVO selectUser(UserVO userVO);
-		
-		@Select("select * from user where id = #{userId}")
-		public UserVO getUserInfo(String userId);
+//		@Select("select count(*) from user where id = #{user_id} and password = #{user_pw}")
+//		public int userCheck(UserVO userVO);
+//
+//		@Select("select * from user order by user_id")
+//		public ArrayList<UserVO> getUserlist();
+//		
+//		@Select("select * from user where id = #{user_id}")
+//		public UserVO selectUser(UserVO userVO);
 //		
 //		@Update("update smember set password=#{password}, name=#{name}, age=#{age}, gender=#{gender}, email=#{email} where id=#{id}")
 //		public int updateMember(UserVO userVO);

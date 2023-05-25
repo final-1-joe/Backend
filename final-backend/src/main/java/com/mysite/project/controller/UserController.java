@@ -1,13 +1,8 @@
 package com.mysite.project.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mysite.project.service.UserService;
@@ -26,32 +21,22 @@ public class UserController {
 	}
 
     @PostMapping("/Loginform")
-    public Map<String, Object> userCheck(@RequestParam("user_id") String user_id, @RequestParam("user_pw") String user_pw) {
-        Map<String, Object> result = new HashMap<>();
-
-        UserVO data = userService.getUserInfo(user_id);
-
-        if (data == null || !data.getUser_pw().equals(user_pw)) {
-            result.put("success", false);
-            result.put("message", "아이디 또는 비밀번호가 일치하지 않습니다.");
+    public int login(@RequestBody UserVO vo) {
+        String user_id = vo.getUser_id();
+        String user_pw = vo.getUser_pw();
+        boolean loginResult = userService.loginUser(user_id, user_pw);
+        if (loginResult) {
+            return 1; // 로그인 성공
         } else {
-            result.put("success", true);
+            return 0; // 로그인 실패
         }
-
-        return result;
     }
 
     @PostMapping ("/Registerform_2")
     public int insertUser(@RequestBody UserVO vo) {
     	int res = userService.insertUser(vo);
     	return res;
-
-        
-
-
-    }
-
-	
+    }	
 }
 	
 

@@ -5,10 +5,8 @@ import com.mysite.project.vo.UserVO;
 
 public interface UserService {
 	public int insertUser(UserVO vo);
-	public int userCheck(UserVO userVO);
-	public ArrayList<UserVO> getUserlist();
-	public UserVO selectUser(UserVO userVO);
-    public UserVO getUserInfo(String userId);
+	boolean loginUser(String user_id, String user_pw);
+    public UserVO getUserById(String user_id);
 //	public int updateUser(UserVO userVO);
 //	public int deleteUser(UserVO userVO);
 }
