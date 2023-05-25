@@ -5,7 +5,7 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry;
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker;
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
-
+import org.springframework.web.socket.config.annotation.WebSocketTransportRegistration;
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
@@ -20,4 +20,11 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 		registry.setApplicationDestinationPrefixes("/pub"); // publish // 클라이언트가 특정 채팅룸에 메시지를 send 할때
 		registry.enableSimpleBroker("/sub", "/queue"); // subscribe // 클라이언트가 특정 채팅룸을 구독(sub) 하고 싶을때
 	}
+	
+	@Override
+	public void configureWebSocketTransport(WebSocketTransportRegistration registration) {
+		registration.setDecoratorFactories(new AgentWebSocketHandlerDecoratorFactory());
+	} 
+	
 }
+	
