@@ -12,7 +12,7 @@ import com.mysite.project.dto.chat.ChatDto;
 public interface ChatMapper {
 	
 	// 보내기 버튼 클릭시 해당 내용을 DB에 저장함
-	@Insert("INSERT INTO message_db (message_id, user_id, chatroom_id, message_content, message_date) values(null, #{user_id}, #{chatroom_id}, #{message_content}, now())")
+	@Insert("INSERT INTO message_db (message_id, user_id, chatroom_id, message_content, img_code, file_code, message_date) values(null, #{user_id}, #{chatroom_id}, #{message_content}, #{img_code}, #{file_code}, now())")
 	public int insertMessage(ChatDto chatDto) throws Exception;
 	
 	// 로그인 세션 정보를 바탕으로 해당 사용자와 대화하는 사람들과 그 채팅방 번호들을 select, 추가로 해당 채팅방의 마지막 메시지도 select함
