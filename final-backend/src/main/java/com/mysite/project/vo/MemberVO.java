@@ -10,4 +10,6 @@ public class MemberVO {
 	private String user_email;
 	private String user_tel;
 	private String user_code;
+	private String user_orlicense;
+	private String user_stlicense;
 }

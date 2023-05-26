@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.mysite.project.mapper.MarkPjMapper;
 import com.mysite.project.service.MarkPjService;
 import com.mysite.project.vo.MarkPjVO;
+import com.mysite.project.vo.MyMarkPjVO;
 
 @Service
 public class MarkPjServiceImpl implements MarkPjService {
@@ -18,8 +19,8 @@ public class MarkPjServiceImpl implements MarkPjService {
 	}
 	
 	@Override
-	public List<MarkPjVO> selectMarkPj(String user_id) {
-		List<MarkPjVO> markPjList = mapper.selectMarkPj(user_id);
+	public List<MyMarkPjVO> selectMarkPj(String user_id) {
+		List<MyMarkPjVO> markPjList = mapper.selectMarkPj(user_id);
 		return markPjList;
 	}
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.mysite.project.mapper.MarkFreeMapper;
 import com.mysite.project.service.MarkFreeService;
 import com.mysite.project.vo.MarkFreeVO;
+import com.mysite.project.vo.MyMarkFreeVO;
 
 @Service
 public class MarkFreeServiceImpl implements MarkFreeService {
@@ -18,8 +19,8 @@ public class MarkFreeServiceImpl implements MarkFreeService {
 	}
 	
 	@Override
-	public List<MarkFreeVO> selectMarkFree(String user_id) {
-		List<MarkFreeVO> markFreeList = mapper.selectMarkFree(user_id);
+	public List<MyMarkFreeVO> selectMarkFree(String user_id) {
+		List<MyMarkFreeVO> markFreeList = mapper.selectMarkFree(user_id);
 		return markFreeList;
 	}
 
