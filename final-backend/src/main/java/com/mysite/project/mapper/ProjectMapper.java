@@ -26,10 +26,10 @@ public interface ProjectMapper {
 	@Select("select * from project_db where pj_num=#{pj_num}")
 	public ProjectVO projectDetail(@Param("pj_num") int pj_num);
 	
-	@Insert("insert into project_db(pj_corpname, pj_title, pj_content, pj_date, pj_pay, "
-			+ "pj_start, pj_day, pj_place, pj_work_form, pj_job, pj_skill, pj_pick, pj_period, user_id) "
-			+ "values(#{pj_corpname}, #{pj_title}, #{pj_content}, now(), #{pj_pay}, #{pj_start}, "
-			+ "#{pj_day}, #{pj_place}, #{pj_work_form}, #{pj_job}, #{pj_skill}, #{pj_pick}, #{pj_period}, #{user_id})")
+	@Insert("insert into project_db(pj_title, pj_corpname, pj_work_form, pj_place, pj_start, pj_period, "
+			+ "pj_job, pj_pay, pj_day, pj_pick, pj_skill, pj_content, pj_date, user_id) "
+			+ "values(#{pj_title}, #{pj_corpname}, #{pj_work_form},  #{pj_place}, #{pj_start}, #{pj_period}, "
+			+ "#{pj_job}, #{pj_pay}, #{pj_day}, #{pj_pick}, #{pj_skill}, #{pj_content}, now(), #{user_id})")
 	public int insertProject(ProjectVO project);
 	
 	@Update("update project_db set pj_title=#{pj_title}, pj_content=#{pj_content}, pj_date=now(), "
