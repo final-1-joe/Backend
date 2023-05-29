@@ -25,7 +25,7 @@ public interface CalMapper {
 	List<CalVo> getScheduleList(CalVo vo);
 	
 	@Update("update schedule_db set schedule_title=#{schedule_title}, schedule_content=#{schedule_content}, "
-			+ "schedule_start=#{schedule_start}, schedule_end=#{schedule_end} "
+			+ "schedule_start=#{schedule_start}, schedule_end=#{schedule_end}, schedule_color=#{schedule_color} "
 			+ "where schedule_key=#{schedule_key}")
 	public void updateSchedule(Schedule_updateDTO updatedto);
 	

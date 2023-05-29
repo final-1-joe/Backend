@@ -9,4 +9,5 @@ public class Schedule_updateDTO {
 	private String schedule_start;
 	private String schedule_end;
 	private String schedule_key;
+	private String schedule_color;
 }
