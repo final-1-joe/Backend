@@ -20,6 +20,11 @@ public class MemberServiceImpl implements MemberService {
 		int res = mapper.insertMember(memberVO);
 		return res;
 	}
+	
+	@Override
+	public String findCodeInfo(String user_id) {
+		return mapper.findCodeInfo(user_id);
+	}
 
 	@Override
 	public MemberVO findMemberInfo(String user_id) {

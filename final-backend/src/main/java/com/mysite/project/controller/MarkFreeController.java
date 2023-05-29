@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mysite.project.impl.MarkFreeServiceImpl;
 import com.mysite.project.vo.MarkFreeVO;
+import com.mysite.project.vo.MyMarkFreeVO;
 
 @RestController
 public class MarkFreeController {
@@ -19,9 +20,9 @@ public class MarkFreeController {
 		this.markFreeServiceImpl = markFreeServiceImpl;
 	}
 	
-	@GetMapping("/api/markfreelist")
-	public List<MarkFreeVO> selectMarkFree(@RequestParam("user_id") String user_id) {
-		List<MarkFreeVO> markFreeList = markFreeServiceImpl.selectMarkFree(user_id);
+	@GetMapping("/auth/markfreelist")
+	public List<MyMarkFreeVO> selectMarkFree(@RequestParam("user_id") String user_id) {
+		List<MyMarkFreeVO> markFreeList = markFreeServiceImpl.selectMarkFree(user_id);
 		return markFreeList;
 	}
 }
