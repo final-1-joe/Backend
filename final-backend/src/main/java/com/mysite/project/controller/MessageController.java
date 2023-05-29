@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriUtils;
 
 import com.mysite.project.dto.chat.ChatDto;
+import com.mysite.project.dto.chat.ChatDto2;
+import com.mysite.project.dto.chat.ChatDto3;
 import com.mysite.project.service.ChatService;
 
 import lombok.RequiredArgsConstructor;
@@ -49,6 +50,10 @@ public class MessageController {
 				template.convertAndSend("/sub/"+ chatDto.getChatroom_id(), chatDto);
 			}
 			
+			else if (chatDto.getMessage_content() == "") {
+				System.out.println("공백" + chatDto);
+				template.convertAndSend("/sub/"+ chatDto.getChatroom_id(), chatDto);
+			}
 			else {
 				System.out.println("메시지" + chatDto);
 				chatService.insertMessage(chatDto); //db 저장
@@ -90,7 +95,8 @@ public class MessageController {
 	        }
 	    } 
 		
-		@PostMapping("/file-download")
+		// 파일 다운로드
+		@PostMapping("/file-download") 
 		public ResponseEntity<UrlResource> download(@RequestParam("fileName") String filename) throws MalformedURLException {
 		    // 파일 경로
 		    String filePath = "C:\\Project\\upload\\" + filename;
@@ -110,4 +116,33 @@ public class MessageController {
 		            .body(resource);
 		}
 		
+		// 채팅방 만들기 + 해당 채팅방 번호 반환
+		@PostMapping("/createChatroom") 
+		public int createChatroom(@RequestBody ChatDto2 chatDto2) throws Exception{
+			if (chatService.searchRoom(chatDto2)== -1) { // 채팅방이 없다면 
+				chatService.voidRoom(); // 빈 채팅방을 하나 만들고
+				chatService.joinRoom1(chatDto2);//그 채팅방 번호에 join 시킴
+				chatService.joinRoom2(chatDto2);//그 채팅방 번호에 join 시킴
+			}
+			return chatService.searchRoom(chatDto2); // 채팅방 번호 반환 
+		}
+		
+		// 채팅방 나가기
+		@PostMapping("/quitChatroom")
+		public int quitRoom(@RequestBody ChatDto chatDto) throws Exception {
+			chatService.quitRoom1(chatDto); //chat_join 의 아이디 값 변경
+			return chatService.quitRoom2(chatDto); //message_db 의 아이디 값 변경
+		}
+		
+		//협업중인지 확인하기
+		@PostMapping("/getworkstate")
+		public List<ChatDto3> getworkState(@RequestBody ChatDto2 chatDto2) throws Exception {
+			if(chatService.getworkState(chatDto2).isEmpty()) {
+				String tmp = chatDto2.getMy_user_id();
+				chatDto2.setMy_user_id(chatDto2.getYour_user_id());
+				chatDto2.setYour_user_id(tmp);
+			}
+			
+			return chatService.getworkState(chatDto2);
+		}
 }
