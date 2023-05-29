@@ -1,10 +1,9 @@
 package com.mysite.project.controller;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,6 +23,11 @@ public class MemberController {
 	public int insertMember(MemberVO memberVO) {
 		int res = memberServiceImpl.insertMember(memberVO);
 		return res;
+	}
+	
+	@GetMapping("/auth/user_code")
+	public String findCodeInfo(String user_id) {
+		return memberServiceImpl.findCodeInfo(user_id);
 	}
 	
 	@GetMapping("/auth/userinfo")

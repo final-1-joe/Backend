@@ -2,9 +2,9 @@ package com.mysite.project.service;
 
 import java.util.List;
 
-import com.mysite.project.vo.MarkFreeVO;
+import com.mysite.project.vo.MyMarkFreeVO;
 
 public interface MarkFreeService {
-	public List<MarkFreeVO> selectMarkFree(String user_id);
+	List<MyMarkFreeVO> selectMarkFree(String user_id);
 
 }
