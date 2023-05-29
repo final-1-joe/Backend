@@ -23,6 +23,7 @@ import org.springframework.web.util.UriUtils;
 
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
+import com.mysite.project.dto.chat.ChatDto3;
 import com.mysite.project.service.ChatService;
 
 import lombok.RequiredArgsConstructor;
@@ -133,4 +134,15 @@ public class MessageController {
 			return chatService.quitRoom2(chatDto); //message_db 의 아이디 값 변경
 		}
 		
+		//협업중인지 확인하기
+		@PostMapping("/getworkstate")
+		public List<ChatDto3> getworkState(@RequestBody ChatDto2 chatDto2) throws Exception {
+			if(chatService.getworkState(chatDto2).isEmpty()) {
+				String tmp = chatDto2.getMy_user_id();
+				chatDto2.setMy_user_id(chatDto2.getYour_user_id());
+				chatDto2.setYour_user_id(tmp);
+			}
+			
+			return chatService.getworkState(chatDto2);
+		}
 }

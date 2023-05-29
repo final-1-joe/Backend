@@ -9,6 +9,8 @@ import org.apache.ibatis.annotations.Update;
 
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
+import com.mysite.project.dto.chat.ChatDto3;
+import com.mysite.project.vo.ProjectVO;
 
 @Mapper
 public interface ChatMapper {
@@ -47,4 +49,9 @@ public interface ChatMapper {
 	
 	@Update ("UPDATE MESSAGE_DB SET USER_ID = '(알 수 없음)' WHERE USER_ID = #{user_id} AND CHATROOM_ID = #{chatroom_id}")
 	public int quitRoom2(ChatDto chatDto) throws Exception;
+	
+	// 채팅 상대와 협업중인지 알기 위한 select 문
+	@Select ("SELECT pj_status FROM pj_status_db WHERE user_id = #{my_user_id} AND pj_num IN (SELECT pj_num FROM project_db WHERE user_id = #{your_user_id})")
+	public List<ChatDto3> getworkState(ChatDto2 chatDto2) throws Exception;
+	
 }

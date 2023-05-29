@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
+import com.mysite.project.dto.chat.ChatDto3;
 import com.mysite.project.mapper.ChatMapper;
 import com.mysite.project.service.ChatService;
+import com.mysite.project.vo.ProjectVO;
 
 
 @Service
@@ -64,5 +66,10 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public int quitRoom2(ChatDto chatDto) throws Exception {
 		return chatMapper.quitRoom2(chatDto);
+	}
+	
+	@Override
+	public List<ChatDto3> getworkState(ChatDto2 chatDto2) throws Exception {
+		return chatMapper.getworkState(chatDto2);
 	}
 }
