@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mysite.project.mapper.ProjectMapper">
+<resultMap id="projectResultMap" type="com.mysite.project.vo.ProjectVO">
+    <id property="pj_num" column="pj_num"/>
+    <result property="pj_corpname" column="pj_corpname"/>
+    <result property="pj_title" column="pj_title"/>
+    <result property="pj_content" column="pj_content"/>
+    <result property="pj_date" column="pj_date"/>
+    <result property="pj_pay" column="pj_pay"/>
+    <result property="pj_start" column="pj_start"/>
+    <result property="pj_day" column="pj_day"/>
+    <result property="pj_place" column="pj_place"/>
+    <result property="pj_work_form" column="pj_work_form"/>
+    <result property="pj_job" column="pj_job"/>
+    <result property="pj_skill" column="pj_skill"/>
+    <result property="pj_pick" column="pj_pick"/>
+    <result property="pj_period" column="pj_period"/>
+    <result property="user_id" column="user_id"/>
+  </resultMap>
+
+
+<select id="projectListTag" parameterType="com.mysite.project.vo.ProjectVO" resultMap="projectResultMap">
+    SELECT *
+    FROM project_db
+    <where>
+      <if test="pj_job != ''">
+        AND pj_job = #{pj_job}
+      </if>
+      <choose>
+        <when test="pj_day == 3">
+          AND pj_day &lt;= 3
+        </when>
+        <when test="pj_day == 6">
+          AND pj_day BETWEEN 3 AND 6
+        </when>
+        <when test="pj_day == 12">
+          AND pj_day BETWEEN 6 AND 12
+        </when>
+        <when test="pj_day == 13">
+          AND pj_day &gt;= 12
+        </when>
+      </choose>
+      <if test="pj_work_form != ''">
+        AND (pj_work_form = #{pj_work_form} or pj_work_form = "allok")
+      </if>
+    </where>
+</select>
+
+
+</mapper>
+
+<!-- ProjectMapper.xml -->
+
+
+
+

@@ -16,13 +16,18 @@ public class ProjectServiceImpl implements ProjectService {
 	public ProjectServiceImpl(ProjectMapper mapper) {
 		this.mapper = mapper;
 	}
-
+	
 	@Override
 	public List<ProjectVO> projectList() {
 		List<ProjectVO> pjList = mapper.projectList();
 		return pjList;
 	}
-
+	
+	@Override
+	public List<ProjectVO> projectListTag(ProjectVO project) {
+		return mapper.projectListTag(project);
+	}
+	
 	@Override
 	public ProjectVO projectDetail(int pj_num) {
 		ProjectVO vo = mapper.projectDetail(pj_num);
@@ -46,5 +51,7 @@ public class ProjectServiceImpl implements ProjectService {
 		int res = mapper.deleteProject(project);
 		return res;
 	}
+
+	
 
 }

@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.mysite.project.vo.ProjectVO;
+import com.mysite.project.vo.SBQuestionVO;
 
 @Mapper
 public interface ProjectMapper {
@@ -25,6 +26,11 @@ public interface ProjectMapper {
 	
 	@Select("select * from project_db where pj_num=#{pj_num}")
 	public ProjectVO projectDetail(@Param("pj_num") int pj_num);
+	
+
+	public List<ProjectVO> projectListTag(ProjectVO project);
+	
+
 	
 	@Insert("insert into project_db(pj_corpname, pj_title, pj_content, pj_date, pj_pay, "
 			+ "pj_start, pj_day, pj_place, pj_work_form, pj_job, pj_skill, pj_pick, pj_period, user_id) "
