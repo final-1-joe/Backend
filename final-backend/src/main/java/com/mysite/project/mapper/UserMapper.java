@@ -19,8 +19,8 @@ import com.mysite.project.vo.UserVO;
 		@Select("select * from user_db where user_id = #{user_id}")
 		public UserVO getUserById(String user_id);
 		
-//		@Select("select count(*) from user where id = #{user_id} and password = #{user_pw}")
-//		public int userCheck(UserVO userVO);
+		@Select("select count(*) from user where id = #{user_id} and password = #{user_pw}")
+		public int userCheck(UserVO userVO);
 //
 //		@Select("select * from user order by user_id")
 //		public ArrayList<UserVO> getUserlist();

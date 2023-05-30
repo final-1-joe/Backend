@@ -1,6 +1,10 @@
 package com.mysite.project.impl;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.mysite.project.mapper.UserMapper;
 import com.mysite.project.service.UserService;
@@ -34,18 +38,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserVO getUserById(String user_id) {
 		return userMapper.getUserById(user_id);
-		    }
+		 }
 	}
-//	}
-//
-//	@Override
-//	public int updateMember(MemberVO memberVO) {
-//		int res = mapper.updateMember(memberVO);
-//		return res;
-//	}
-//
-//	@Override
-//	public int deleteMeber(MemberVO memberVO) {
-//		int res = mapper.deleteMeber(memberVO);
-//		return res;
-//	}
+
+

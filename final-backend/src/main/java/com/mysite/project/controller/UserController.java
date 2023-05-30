@@ -32,11 +32,18 @@ public class UserController {
         }
     }
 
-    @PostMapping ("/Registerform_2")
-    public int insertUser(@RequestBody UserVO vo) {
+    @PostMapping ("/Registerform_1")
+    public int insertUser1(@RequestBody UserVO vo) {
     	int res = userService.insertUser(vo);
     	return res;
     }	
+    @PostMapping ("/Registerform_2")
+    public int insertUser2(@RequestBody UserVO vo) {
+    	int res = userService.insertUser(vo);
+    	return res;
+    		
+    }	
 }
+
 	
 
