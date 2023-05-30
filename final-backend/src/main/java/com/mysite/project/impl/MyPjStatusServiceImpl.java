@@ -1,7 +1,9 @@
 package com.mysite.project.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import com.mysite.project.mapper.MyPjStatusMapper;
@@ -21,6 +23,12 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	public List<MyPjStatusVO> selectOngoingPj(String user_id) {
 		List<MyPjStatusVO> ongoinglist = mapper.selectOngoingPj(user_id);
 		return ongoinglist;
+	}
+	
+	@Override
+	public List<MyPjStatusVO> selectFreeOngoingPj(String user_id) {
+		List<MyPjStatusVO> freeongoinglist = mapper.selectFreeOngoingPj(user_id);
+		return freeongoinglist;
 	}
 
 	@Override
@@ -52,5 +60,9 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 		int res = mapper.deleteInprogressPj(user_id, pj_num);
 		return res;
 	}
-
+	
+	@Override
+	public HashMap<String, Object> selectClient(String user_id, int pj_num) {
+		return mapper.selectClient(user_id, pj_num);
+	}
 }

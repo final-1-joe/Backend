@@ -23,7 +23,7 @@ public interface MemberMapper {
 	public MemberVO findMemberInfo(@Param("user_id")String user_id);
 	//회원정보 불러오기(비밀번호 제외)
 	
-	@Update("UPDATE user_db SET user_pw=#{newPassword}, user_name=#{user_name}, user_email=#{user_email}, "
+	@Update("UPDATE user_db SET user_pw=#{user_pw}, user_name=#{user_name}, user_email=#{user_email}, "
 			+ "user_tel=#{user_tel} WHERE user_id=#{user_id}")
 	public int modifyMemberInfo(MemberVO memberVO);
 	//회원정보 변경
