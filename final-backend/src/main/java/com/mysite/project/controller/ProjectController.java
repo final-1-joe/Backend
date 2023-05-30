@@ -3,6 +3,7 @@ package com.mysite.project.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -25,6 +26,15 @@ public class ProjectController {
 		List<ProjectVO> pjList = projectService.projectList();
 		return pjList;
 	}
+	
+	@RequestMapping(value = "/pjlisttag")
+	@ResponseBody
+	public List<ProjectVO> projectListTag(@RequestBody ProjectVO project) {
+	    System.out.println(project); // Print the project object to the console
+	    List<ProjectVO> pjList = projectService.projectListTag(project);
+	    return pjList;
+	}
+
 	
 	@RequestMapping(value = "/pjdetail", method = RequestMethod.GET)
 	@ResponseBody
