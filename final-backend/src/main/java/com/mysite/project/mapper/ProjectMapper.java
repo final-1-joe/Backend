@@ -29,6 +29,9 @@ public interface ProjectMapper {
 	@Select("select * from project_db where pj_num=#{pj_num}")
 	public ProjectVO projectDetail(@Param("pj_num") int pj_num);
 	
+
+	public List<ProjectVO> projectListTag(ProjectVO project);
+	
 	@Insert("insert into project_db(pj_title, pj_corpname, pj_work_form, pj_place, pj_start, pj_period, "
 			+ "pj_job, pj_pay, pj_end, pj_day, pj_pick, pj_skill, pj_content, pj_date, user_id) "
 			+ "values(#{pj_title}, #{pj_corpname}, #{pj_work_form},  #{pj_place}, #{pj_start}, #{pj_period}, "
@@ -42,6 +45,7 @@ public interface ProjectMapper {
 	
 	@Delete("delete from project_db where pj_num=#{pj_num}")
 	public int deleteProject(ProjectVO project);
+	
 	
 	
 }

@@ -27,12 +27,21 @@ public class ProjectController {
 		return pjList;
 	}
 	
+
 	@RequestMapping(value = "/pjlist/pjdetail", method = RequestMethod.GET)
-	@ResponseBody
+  @ResponseBody
 	public ProjectVO projectDetail(int pj_num) {
 		ProjectVO vo = projectService.projectDetail(pj_num);
 		return vo;
 	}
+  
+	@RequestMapping(value = "/pjlisttag")
+	@ResponseBody
+	public List<ProjectVO> projectListTag(@RequestBody ProjectVO project) {
+	    List<ProjectVO> pjList = projectService.projectListTag(project);
+	    return pjList;
+	}
+	
 	
 	@RequestMapping(value = "/pjdetail/insert", method = RequestMethod.POST)
 	@ResponseBody

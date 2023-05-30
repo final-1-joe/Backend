@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mysite.project.mapper.SBQuestionMapper">
+  <resultMap id="sbQuestionResultMap" type="com.mysite.project.vo.SBQuestionVO">
+    <id property="sbqnum" column="sbqnum" />
+    <result property="sbqsubject" column="sbqsubject" />
+    <result property="sbqcontent" column="sbqcontent" />
+    <result property="sbqwriter" column="sbqwriter" />
+    <result property="sbqcreateDate" column="sbqcreateDate" />
+    <collection property="answerList" ofType="com.mysite.project.vo.SBAnswerVO">
+      <id property="sbanum" column="answer_sbanum" />
+      <result property="sbaanswer" column="answer_sbaanswer" />
+      <result property="sbawriter" column="answer_sbawriter" />
+      <result property="sbacreateDate" column="answer_sbacreateDate" />
+      <result property="sbquestion_id" column="answer_sbquestion_id" />
+    </collection>
+  </resultMap>
+  
+  <resultMap id="SBAnswerResultMap" type="com.mysite.project.vo.SBAnswerVO">
+  <id property="sbanum" column="sbanum"/>
+  <result property="sbaanswer" column="sbaanswer"/>
+  <result property="sbawriter" column="sbawriter"/>
+  <result property="sbacreateDate" column="sbacreateDate"/>
+  <result property="sbquestion_id" column="sbquestion_id"/>
+</resultMap>
+
+  <select id="getSBQList" resultMap="sbQuestionResultMap">
+  SELECT q.*,
+         a.sbanum AS answer_sbanum,
+         a.sbaanswer AS answer_sbaanswer,
+         a.sbawriter AS answer_sbawriter,
+         a.sbacreateDate AS answer_sbacreateDate,
+         a.sbquestion_id AS answer_sbquestion_id
+  FROM sbquestion q
+  LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+  ORDER BY q.sbqnum DESC
+  LIMIT #{start}, #{pageSize}
+</select>
+
+<select id="getNASBQList" resultMap="sbQuestionResultMap">
+  SELECT q.*,
+       a.sbanum AS answer_sbanum,
+       a.sbaanswer AS answer_sbaanswer,
+       a.sbawriter AS answer_sbawriter,
+       a.sbacreateDate AS answer_sbacreateDate,
+       a.sbquestion_id AS answer_sbquestion_id
+FROM sbquestion q
+LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+WHERE a.sbquestion_id IS NULL
+ORDER BY q.sbqnum ASC
+LIMIT #{start}, #{pageSize}
+</select>
+
+<select id="getNACount" resultType="java.lang.Integer">
+SELECT COUNT(*) AS count
+FROM sbquestion q
+LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+WHERE a.sbquestion_id IS NULL
+</select>
+
+<select id="getASBQList" resultMap="sbQuestionResultMap">
+  SELECT q.*,
+       a.sbanum AS answer_sbanum,
+       a.sbaanswer AS answer_sbaanswer,
+       a.sbawriter AS answer_sbawriter,
+       a.sbacreateDate AS answer_sbacreateDate,
+       a.sbquestion_id AS answer_sbquestion_id
+FROM sbquestion q
+LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+WHERE a.sbquestion_id IS NOT NULL
+ORDER BY q.sbqnum DESC
+LIMIT #{start}, #{pageSize}
+</select>
+
+<select id="getACount" resultType="java.lang.Integer">
+SELECT COUNT(*) AS count
+FROM sbquestion q
+LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+WHERE a.sbquestion_id IS NOT NULL
+</select>
+
+
+  <select id="getSBA" resultMap="sbQuestionResultMap">
+  SELECT q.sbqnum,
+          a.sbanum AS answer_sbanum,
+         a.sbaanswer AS answer_sbaanswer,
+         a.sbawriter AS answer_sbawriter,
+         a.sbacreateDate AS answer_sbacreateDate,
+         a.sbquestion_id AS answer_sbquestion_id
+  FROM sbquestion q
+  LEFT JOIN sbanswer a ON a.sbquestion_id = q.sbqnum
+    WHERE q.sbqnum = #{sbqnum}
+</select>
+
+
+</mapper>
