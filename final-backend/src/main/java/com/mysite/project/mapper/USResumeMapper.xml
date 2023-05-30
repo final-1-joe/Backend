@@ -7,9 +7,9 @@
   <!-- INSERT -->
   <insert id="insertUSR" parameterType="com.mysite.project.vo.USResumeVO">
     INSERT INTO us_resume
-      (user_id, user_nm, user_js, user_bd, user_gen, user_email, user_tel, user_jg, user_job, user_skill, user_ws, user_wt, user_pay, user_career, user_orfile,user_stfile, user_github)
+      (user_id, user_nm, user_js, user_bd, user_gen, user_email, user_tel, user_jg, user_job, user_skill, user_ws, user_wt, user_pay, user_career, user_orfile,user_stfile, user_github,user_intro)
     VALUES
-      (#{user_id}, #{user_nm}, #{user_js}, #{user_bd}, #{user_gen}, #{user_email}, #{user_tel}, #{user_jg}, #{user_job}, #{user_skill}, #{user_ws}, #{user_wt}, #{user_pay}, #{user_career}, #{user_orfile},#{user_stfile}, #{user_github})
+      (#{user_id}, #{user_nm}, #{user_js}, #{user_bd}, #{user_gen}, #{user_email}, #{user_tel}, #{user_jg}, #{user_job}, #{user_skill}, #{user_ws}, #{user_wt}, #{user_pay}, #{user_career}, #{user_orfile},#{user_stfile}, #{user_github}, #{user_intro})
   </insert>
 
   <!-- SELECT -->
@@ -17,6 +17,41 @@
     SELECT * FROM us_resume WHERE user_id = #{user_id}
   </select>
 
+<select id="USRList" resultType="com.mysite.project.vo.USResumeVO">
+    SELECT *
+    FROM us_resume
+    <where>
+      <if test="user_jg != ''">
+        AND user_jg = #{user_jg}
+      </if>
+      <choose>
+        <when test="user_career == 3">
+          AND user_career &lt;= 3
+        </when>
+        <when test="user_career == 6">
+          AND user_career BETWEEN 3 AND 6
+        </when>
+        <when test="user_career == 10">
+          AND user_career BETWEEN 6 AND 10
+        </when>
+        <when test="user_career == 11">
+          AND user_career &gt;= 12
+        </when>
+      </choose>
+      <if test="user_ws != ''">
+        AND (user_ws = #{user_ws} or user_ws = "allok")
+      </if>
+      <if test="user_js != ''">
+        AND (user_js = #{user_js} )
+      </if>
+      <if test="user_nm != ''">
+        AND user_nm LIKE CONCAT('%', #{user_nm}, '%')
+      </if>
+      <if test="user_skill != ''">
+        AND user_skill LIKE CONCAT('%', #{user_skill}, '%')
+      </if>
+    </where>
+</select>
   <!-- UPDATE -->
   <update id="updateUSR" parameterType="com.mysite.project.vo.USResumeVO">
     UPDATE us_resume SET
@@ -35,7 +70,8 @@
       user_career=#{user_career},
       user_orfile=#{user_orfile},
       user_stfile=#{user_stfile},
-      user_github=#{user_github}
+      user_github=#{user_github},
+      user_intro=#{user_intro}
      WHERE user_id=#{user_id}
 	</update>
 </mapper>

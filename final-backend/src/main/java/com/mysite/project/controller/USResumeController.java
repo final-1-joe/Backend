@@ -31,6 +31,12 @@ public class USResumeController {
 		this.usresumeService = usresumeService;
 	}
 	
+	@RequestMapping("/list")
+	public List<USResumeVO> USRList(@RequestBody USResumeVO usresume) {
+	    List<USResumeVO> userList = usresumeService.USRList(usresume);
+	    return userList;
+	}
+	
 	@RequestMapping("/select")
     public USResumeVO getFAQ(@RequestBody USResumeVO usresume) {
        return  this.usresumeService.getUSR(usresume);
