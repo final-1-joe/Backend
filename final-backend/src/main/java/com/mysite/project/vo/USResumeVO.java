@@ -24,4 +24,5 @@ public class USResumeVO {
     private String user_orfile;
     private String user_stfile;
     private String user_github;
+    private String user_intro;
 }
