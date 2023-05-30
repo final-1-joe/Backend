@@ -34,7 +34,6 @@ public class ProjectController {
 	    List<ProjectVO> pjList = projectService.projectListTag(project);
 	    return pjList;
 	}
-
 	
 	@RequestMapping(value = "/pjdetail", method = RequestMethod.GET)
 	@ResponseBody

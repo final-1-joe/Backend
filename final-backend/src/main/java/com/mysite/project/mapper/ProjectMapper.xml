@@ -46,6 +46,12 @@
       <if test="pj_work_form != ''">
         AND (pj_work_form = #{pj_work_form} or pj_work_form = "allok")
       </if>
+      <if test="pj_corpname != ''">
+        AND pj_corpname LIKE CONCAT('%', #{pj_corpname}, '%')
+      </if>
+      <if test="pj_title != ''">
+        AND pj_title LIKE CONCAT('%', #{pj_title}, '%')
+      </if>
     </where>
 </select>
 
