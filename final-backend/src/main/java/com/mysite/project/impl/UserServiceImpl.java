@@ -39,6 +39,12 @@ public class UserServiceImpl implements UserService {
 	public UserVO getUserById(String user_id) {
 		return userMapper.getUserById(user_id);
 		 }
+	
+
+	@Override
+	public int userCheck(String user_id) {
+		int res = userMapper.userCheck(user_id);
+		return res;
 	}
 
-
+}
