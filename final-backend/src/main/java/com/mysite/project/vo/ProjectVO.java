@@ -12,6 +12,7 @@ public class ProjectVO {
 	private String pj_date;
 	private String pj_pay;
 	private String pj_start;
+	private String pj_end;
 	private int pj_day;
 	private String pj_place;
 	private String pj_work_form;

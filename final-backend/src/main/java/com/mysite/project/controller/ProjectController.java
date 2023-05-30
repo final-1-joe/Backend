@@ -27,31 +27,32 @@ public class ProjectController {
 		return pjList;
 	}
 	
-	@RequestMapping(value = "/pjlisttag")
-	@ResponseBody
-	public List<ProjectVO> projectListTag(@RequestBody ProjectVO project) {
-	    System.out.println(project); // Print the project object to the console
-	    List<ProjectVO> pjList = projectService.projectListTag(project);
-	    return pjList;
-	}
-	
-	@RequestMapping(value = "/pjdetail", method = RequestMethod.GET)
-	@ResponseBody
+
+	@RequestMapping(value = "/pjlist/pjdetail", method = RequestMethod.GET)
+  @ResponseBody
 	public ProjectVO projectDetail(int pj_num) {
 		ProjectVO vo = projectService.projectDetail(pj_num);
 		return vo;
 	}
+  
+	@RequestMapping(value = "/pjlisttag")
+	@ResponseBody
+	public List<ProjectVO> projectListTag(@RequestBody ProjectVO project) {
+	    List<ProjectVO> pjList = projectService.projectListTag(project);
+	    return pjList;
+	}
+	
 	
 	@RequestMapping(value = "/pjdetail/insert", method = RequestMethod.POST)
 	@ResponseBody
-	public int insertProject(ProjectVO project) {
+	public int insertProject(@RequestBody ProjectVO project) {
 		int res = projectService.insertProject(project);
 		return res;
 	}
 	
 	@RequestMapping(value = "/pjdetail/update", method = RequestMethod.POST)
 	@ResponseBody
-	public int updateProject(ProjectVO project) {
+	public int updateProject(@RequestBody ProjectVO project) {
 		int res = projectService.updateProject(project);
 		return res;
 	}
