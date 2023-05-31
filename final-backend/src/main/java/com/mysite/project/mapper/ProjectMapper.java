@@ -57,7 +57,7 @@ public interface ProjectMapper {
 	@Select("SELECT MONTH(`pj_end`) AS month, COUNT(*) AS count\r\n"
 			+ "FROM `project_db`\r\n"
 			+ "GROUP BY MONTH(`pj_end`);")
-	public int getCountEnd();
+	public int getCountEnd(); 
 	
 	
 	
