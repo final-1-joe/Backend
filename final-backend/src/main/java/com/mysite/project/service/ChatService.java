@@ -5,6 +5,7 @@ import java.util.List;
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
+import com.mysite.project.dto.chat.ChatDto4;
 
 public interface ChatService {
 	public int insertMessage(ChatDto chatDto) throws Exception;
@@ -17,4 +18,7 @@ public interface ChatService {
 	public int quitRoom1(ChatDto chatDto) throws Exception;
 	public int quitRoom2(ChatDto chatDto) throws Exception;
 	public List<ChatDto3> getworkState(ChatDto2 chatDto2) throws Exception;
+	public double getScore(String user_id) throws Exception;
+	public List<ChatDto4> getnewState(ChatDto chatDto) throws Exception;
+	public int updatenewState(ChatDto chatDto) throws Exception;
 }
