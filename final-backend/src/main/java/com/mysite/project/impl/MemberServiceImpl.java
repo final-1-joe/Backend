@@ -1,5 +1,7 @@
 package com.mysite.project.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.mysite.project.mapper.MemberMapper;
@@ -36,6 +38,12 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(String user_id) {
 		int res = mapper.deleteMember(user_id);
 		return res;
+	}
+	
+	@Override
+	public List<MemberVO> SearchByCodeMember(String user_code) {
+		List<MemberVO> memberVO = mapper.SearchByCodeMember(user_code);
+		return memberVO;
 	}
 
 }

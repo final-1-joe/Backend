@@ -83,4 +83,10 @@ public class MemberController {
         String contentDisposition = "attachment; filename=\"" + encodedFileName + "\"";
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,contentDisposition).body(resource);
 	}
+	
+	@GetMapping("/auth/searchbycode")
+	public List<MemberVO> SearchByCodeMember(@RequestParam("user_code")String user_code) {
+		List<MemberVO> memberVO = memberServiceImpl.SearchByCodeMember(user_code);
+		return memberVO;
+	}
 }

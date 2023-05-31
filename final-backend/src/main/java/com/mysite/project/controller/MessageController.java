@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,7 @@ import org.springframework.web.util.UriUtils;
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
+import com.mysite.project.dto.chat.ChatDto4;
 import com.mysite.project.service.ChatService;
 
 import lombok.RequiredArgsConstructor;
@@ -145,4 +147,21 @@ public class MessageController {
 			
 			return chatService.getworkState(chatDto2);
 		}
+		
+		// 평점 확인하기
+		@GetMapping("/score")
+		public double getScore(@RequestParam("user_id") String user_id) throws Exception {
+			return chatService.getScore(user_id);
+		}
+		
+		@PostMapping("/alarm")
+		public List<ChatDto4> getnewState(@RequestBody ChatDto chatDto) throws Exception {
+			return chatService.getnewState(chatDto);
+		}
+		
+		@PostMapping("/updatealarm")
+		public int updatenewState(@RequestBody ChatDto chatDto) throws Exception {
+			return chatService.updatenewState(chatDto);
+		}
+		
 }
