@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
+import com.mysite.project.dto.chat.ChatDto4;
 import com.mysite.project.mapper.ChatMapper;
 import com.mysite.project.service.ChatService;
-import com.mysite.project.vo.ProjectVO;
 
 
 @Service
@@ -71,5 +71,23 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public List<ChatDto3> getworkState(ChatDto2 chatDto2) throws Exception {
 		return chatMapper.getworkState(chatDto2);
+	}
+	
+	@Override
+	public double getScore(String user_id) throws Exception {
+		if (chatMapper.getScore(user_id)==null) {
+			return 0;
+		}
+		return chatMapper.getScore(user_id);
+	}
+	
+	@Override
+	public List<ChatDto4> getnewState(ChatDto chatDto) throws Exception {
+		return chatMapper.getnewState(chatDto);
+	}
+	
+	@Override
+	public int updatenewState(ChatDto chatDto) throws Exception {
+		return chatMapper.updatenewState(chatDto);
 	}
 }
