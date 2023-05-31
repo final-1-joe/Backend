@@ -29,6 +29,9 @@ public interface ProjectMapper {
 	@Select("select * from project_db where pj_num=#{pj_num}")
 	public ProjectVO projectDetail(@Param("pj_num") int pj_num);
 	
+	@Select("")
+	public List<ProjectVO> similarList();
+	
 
 	public List<ProjectVO> projectListTag(ProjectVO project);
 	
@@ -45,6 +48,16 @@ public interface ProjectMapper {
 	
 	@Delete("delete from project_db where pj_num=#{pj_num}")
 	public int deleteProject(ProjectVO project);
+	
+	@Select("SELECT MONTH(`pj_start`) AS month, COUNT(*) AS count\r\n"
+			+ "FROM `project_db`\r\n"
+			+ "GROUP BY MONTH(`pj_start`);")
+	public int getCountStart();
+	
+	@Select("SELECT MONTH(`pj_end`) AS month, COUNT(*) AS count\r\n"
+			+ "FROM `project_db`\r\n"
+			+ "GROUP BY MONTH(`pj_end`);")
+	public int getCountEnd();
 	
 	
 	
