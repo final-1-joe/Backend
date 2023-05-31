@@ -37,4 +37,10 @@ public class USResumeServiceImpl implements USResumeService {
 		return usrmapper.USRList(usresume);
 	}
 
+	@Override
+	public int usjgCount(USResumeVO usresume) {
+		
+		return usrmapper.usjgCount(usresume);
+	}
+
 }

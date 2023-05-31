@@ -21,7 +21,6 @@
     <result property="user_id" column="user_id"/>
   </resultMap>
 
-
 <select id="projectListTag" parameterType="com.mysite.project.vo.ProjectVO" resultMap="projectResultMap">
     SELECT *
     FROM project_db

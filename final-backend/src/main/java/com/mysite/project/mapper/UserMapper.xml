@@ -9,6 +9,7 @@
   <id property="user_id" column="user_id"/>
   <result property="user_pw" column="user_pw"/>
   <result property="user_name" column="user_name"/>
+  <result property="user_birth" column="user_birth"/>
   <result property="user_email" column="user_email"/>
   <result property="user_tel" column="user_tel"/>
   <result property="user_code" column="user_code"/>
@@ -16,6 +17,7 @@
   <result property="user_stlicense" column="user_stlicense"/>
   <result property="user_resume" column="user_resume"/>
   <result property="user_tag" column="user_tag"/>
+  <result property="user_createdate" column="user_createdate"/>
 </resultMap>
 
 <!-- user_id로 데이터를 찾고 user_code가 "free"인 경우 user_resume과 user_tag 값을 가져오는 쿼리 -->

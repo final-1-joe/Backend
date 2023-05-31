@@ -1,14 +1,15 @@
 package com.mysite.project.controller;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mysite.project.service.UserService;
+import com.mysite.project.vo.UserDateVO;
 import com.mysite.project.vo.UserVO;
 
 
@@ -67,6 +68,14 @@ public class UserController {
     public void updateUserRT(@RequestBody UserVO vo){
     	userService.updateUserRT(vo);
     }
+    
+    @PostMapping ("/userdate")
+    public int UserdateUserdate(@RequestBody UserDateVO vo) {
+    	System.out.print(vo);
+    	return userService.Userdate(vo);
+    }	
+    
+    
 }
 
 	

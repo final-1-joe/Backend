@@ -41,7 +41,12 @@ public class ProjectController {
 	    List<ProjectVO> pjList = projectService.projectListTag(project);
 	    return pjList;
 	}
-	
+	@RequestMapping(value = "/pjjgcount")
+	@ResponseBody
+	public int pjjgCount(@RequestBody ProjectVO project) {
+		System.out.print(project);
+		return projectService.pjjgCount(project);
+	}
 	
 	@RequestMapping(value = "/pjdetail/insert", method = RequestMethod.POST)
 	@ResponseBody

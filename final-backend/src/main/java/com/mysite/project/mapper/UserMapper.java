@@ -4,13 +4,14 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import com.mysite.project.vo.UserDateVO;
 import com.mysite.project.vo.UserVO;
 
 	@Mapper
 	public interface UserMapper {
 		
-		@Insert("insert into user_db(user_id, user_pw, user_name,  user_email, user_tel, user_code,user_orlicense,user_stlicense)"
-				+ " values (#{user_id},#{user_pw},#{user_name},#{user_email},#{user_tel},#{user_code},#{user_orlicense},#{user_stlicense})")
+		@Insert("insert into user_db(user_id, user_pw, user_name, user_birth,user_email, user_tel, user_code,user_orlicense,user_stlicense,user_createdate)"
+				+ " values (#{user_id},#{user_pw},#{user_name},#{user_birth},#{user_email},#{user_tel},#{user_code},#{user_orlicense},#{user_stlicense},now())")
 		public int insertUser(UserVO vo);
 		
 		@Select("select * from user_db where user_id = #{user_id}")
@@ -22,6 +23,9 @@ import com.mysite.project.vo.UserVO;
 		public UserVO getUserStartData(UserVO vo);
 		
 		public void updateUserRT(UserVO vo);
+		
+		@Select("SELECT count(*) FROM user_db WHERE user_code =  #{user_code} AND YEAR(user_createdate) = #{year} AND MONTH(user_createdate) = #{month}")
+		public int Userdate(UserDateVO vo);
 //
 //		@Select("select * from user order by user_id")
 //		public ArrayList<UserVO> getUserlist();

@@ -9,4 +9,5 @@ public interface USResumeService {
 	public USResumeVO getUSR(USResumeVO usresume);
 	public void insert(USResumeVO usresume);
 	public void update(USResumeVO usresume);
+	public int usjgCount(USResumeVO usresume);
 }

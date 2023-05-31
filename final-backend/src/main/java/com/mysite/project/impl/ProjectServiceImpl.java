@@ -52,6 +52,11 @@ public class ProjectServiceImpl implements ProjectService {
 		return res;
 	}
 
+	@Override
+	public int pjjgCount(ProjectVO project) {
+		return mapper.pjjgCount(project);
+	}
+
 	
 
 }

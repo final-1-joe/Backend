@@ -16,6 +16,11 @@
   <select id="getUSR" resultType="com.mysite.project.vo.USResumeVO">
     SELECT * FROM us_resume WHERE user_id = #{user_id}
   </select>
+  
+  <!-- SELECT -->
+  <select id="usjgCount" parameterType="com.mysite.project.vo.USResumeVO">
+    SELECT count(*) FROM us_resume WHERE user_jg = #{user_jg}
+  </select>
 
 <select id="USRList" resultType="com.mysite.project.vo.USResumeVO">
     SELECT *
