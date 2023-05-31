@@ -1,5 +1,7 @@
 package com.mysite.project.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -28,4 +30,6 @@ public interface MemberMapper {
 	@Delete("DELETE FROM user_db WHERE user_id=#{user_id}")
 	public int deleteMember(@Param("user_id") String id);
 	//회원탈퇴
+	@Select("select * from user_db where user_code=#{user_code}")
+	public List<MemberVO> SearchByCodeMember(@Param("user_code") String user_code);
 }
