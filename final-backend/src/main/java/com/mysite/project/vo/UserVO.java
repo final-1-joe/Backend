@@ -1,6 +1,7 @@
 package com.mysite.project.vo;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import lombok.Data;
 
@@ -17,4 +18,5 @@ public class UserVO {
 	private String user_stlicense;
 	private int user_resume;
 	private int user_tag;
+	private LocalDate user_createdate;
 }

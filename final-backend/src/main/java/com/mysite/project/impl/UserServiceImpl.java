@@ -1,13 +1,10 @@
 package com.mysite.project.impl;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.mysite.project.mapper.UserMapper;
 import com.mysite.project.service.UserService;
+import com.mysite.project.vo.UserDateVO;
 import com.mysite.project.vo.UserVO;
 
 
@@ -56,6 +53,11 @@ public class UserServiceImpl implements UserService {
 	public void updateUserRT(UserVO vo) {
 		userMapper.updateUserRT(vo);
 		
+	}
+
+	@Override
+	public int Userdate(UserDateVO vo) {
+		return userMapper.Userdate(vo);
 	}
 
 }

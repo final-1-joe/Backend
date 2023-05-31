@@ -17,6 +17,7 @@
   <result property="user_stlicense" column="user_stlicense"/>
   <result property="user_resume" column="user_resume"/>
   <result property="user_tag" column="user_tag"/>
+  <result property="user_createdate" column="user_createdate"/>
 </resultMap>
 
 <!-- user_id로 데이터를 찾고 user_code가 "free"인 경우 user_resume과 user_tag 값을 가져오는 쿼리 -->
