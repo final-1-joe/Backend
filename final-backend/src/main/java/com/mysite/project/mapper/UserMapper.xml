@@ -9,6 +9,7 @@
   <id property="user_id" column="user_id"/>
   <result property="user_pw" column="user_pw"/>
   <result property="user_name" column="user_name"/>
+  <result property="user_birth" column="user_birth"/>
   <result property="user_email" column="user_email"/>
   <result property="user_tel" column="user_tel"/>
   <result property="user_code" column="user_code"/>

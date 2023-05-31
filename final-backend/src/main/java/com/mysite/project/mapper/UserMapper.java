@@ -9,8 +9,8 @@ import com.mysite.project.vo.UserVO;
 	@Mapper
 	public interface UserMapper {
 		
-		@Insert("insert into user_db(user_id, user_pw, user_name,  user_email, user_tel, user_code,user_orlicense,user_stlicense)"
-				+ " values (#{user_id},#{user_pw},#{user_name},#{user_email},#{user_tel},#{user_code},#{user_orlicense},#{user_stlicense})")
+		@Insert("insert into user_db(user_id, user_pw, user_name, user_birth,user_email, user_tel, user_code,user_orlicense,user_stlicense)"
+				+ " values (#{user_id},#{user_pw},#{user_name},#{user_birth},#{user_email},#{user_tel},#{user_code},#{user_orlicense},#{user_stlicense})")
 		public int insertUser(UserVO vo);
 		
 		@Select("select * from user_db where user_id = #{user_id}")
