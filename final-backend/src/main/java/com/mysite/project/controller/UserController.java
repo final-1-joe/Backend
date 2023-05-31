@@ -51,6 +51,22 @@ public class UserController {
     	 int res = userService.userCheck(user_id);
     	return res;
     }
+    
+    @GetMapping("/checkstart")
+    public UserVO getUserStartData(@RequestBody UserVO vo) {
+    	return userService.getUserStartData(vo);
+    }
+    
+    @PostMapping("/getuser")
+    public UserVO getUserById(@RequestBody UserVO vo) {
+    	String id = vo.getUser_id();
+    	return userService.getUserById(id);
+    }
+    
+    @PostMapping("/updatert")
+    public void updateUserRT(@RequestBody UserVO vo){
+    	userService.updateUserRT(vo);
+    }
 }
 
 	
