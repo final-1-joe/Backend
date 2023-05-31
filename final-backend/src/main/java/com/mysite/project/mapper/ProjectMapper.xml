@@ -31,20 +31,20 @@
       </if>
       <choose>
         <when test="pj_day == 3">
-          AND pj_day &lt;= 3
+          AND pj_day &lt;= 92
         </when>
         <when test="pj_day == 6">
-          AND pj_day BETWEEN 3 AND 6
+          AND pj_day BETWEEN 92 AND 184
         </when>
         <when test="pj_day == 12">
-          AND pj_day BETWEEN 6 AND 12
+          AND pj_day BETWEEN 184 AND 365
         </when>
         <when test="pj_day == 13">
-          AND pj_day &gt;= 12
+          AND pj_day &gt;= 365
         </when>
       </choose>
       <if test="pj_work_form != ''">
-        AND (pj_work_form = #{pj_work_form} or pj_work_form = "allok")
+        AND (pj_work_form = #{pj_work_form})
       </if>
       <if test="pj_corpname != ''">
         AND pj_corpname LIKE CONCAT('%', #{pj_corpname}, '%')

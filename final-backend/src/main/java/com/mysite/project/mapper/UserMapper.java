@@ -1,11 +1,8 @@
 package com.mysite.project.mapper;
 
-import java.util.ArrayList;
-import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import com.mysite.project.vo.UserVO;
 
@@ -21,6 +18,10 @@ import com.mysite.project.vo.UserVO;
 		
 		@Select("select count(*) from user_db where user_id = #{user_id}")
 		public int userCheck(String user_id);
+		
+		public UserVO getUserStartData(UserVO vo);
+		
+		public void updateUserRT(UserVO vo);
 //
 //		@Select("select * from user order by user_id")
 //		public ArrayList<UserVO> getUserlist();

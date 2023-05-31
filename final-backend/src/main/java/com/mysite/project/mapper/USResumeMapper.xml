@@ -39,7 +39,7 @@
         </when>
       </choose>
       <if test="user_ws != ''">
-        AND (user_ws = #{user_ws} or user_ws = "allok")
+        AND (user_ws = #{user_ws} or user_ws = "상관없음")
       </if>
       <if test="user_js != ''">
         AND (user_js = #{user_js} )
