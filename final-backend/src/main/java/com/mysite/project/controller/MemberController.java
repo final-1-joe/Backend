@@ -14,7 +14,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -82,5 +81,11 @@ public class MemberController {
         String encodedFileName = UriUtils.encode(originfilename, StandardCharsets.UTF_8);
         String contentDisposition = "attachment; filename=\"" + encodedFileName + "\"";
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,contentDisposition).body(resource);
+	}
+	
+	@GetMapping("/auth/searchbycode")
+	public List<MemberVO> SearchByCodeMember(@RequestParam("user_code")String user_code) {
+		List<MemberVO> memberVO = memberServiceImpl.SearchByCodeMember(user_code);
+		return memberVO;
 	}
 }
