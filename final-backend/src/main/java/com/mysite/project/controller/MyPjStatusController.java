@@ -53,6 +53,12 @@ public class MyPjStatusController {
 		return finishedlist;
 	}
 	
+	@GetMapping("/auth/pjlistClient")
+	public List<MyPjStatusVO> selectPjByClient(String user_id) {
+		List<MyPjStatusVO> pjListByClient = myPjStatusServiceImpl.selectPjByClient(user_id);
+		return pjListByClient;
+	}
+	
 	@PutMapping("/auth/updatecompleted")
 	public int updateCompletedPj(@RequestBody MyPjStatusVO vo) {
 		System.out.println("pj_num=>"+vo.getPj_num());
