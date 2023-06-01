@@ -46,8 +46,6 @@ public interface ProjectMapper {
 	public int updateProject(ProjectVO project);
 	
 	@Delete("delete from project_db where pj_num=#{pj_num}")
-	public int deleteProject(ProjectVO project);
-	
-	
+	public int deleteProject(ProjectVO project);	
 	
 }

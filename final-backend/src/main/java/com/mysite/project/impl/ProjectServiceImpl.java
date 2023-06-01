@@ -57,6 +57,4 @@ public class ProjectServiceImpl implements ProjectService {
 		return mapper.pjjgCount(project);
 	}
 
-	
-
 }

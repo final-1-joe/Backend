@@ -18,8 +18,8 @@ public class PjReviewServiceImpl implements PjReviewService {
 	}
 
 	@Override
-	public List<PjReviewVO> getReviewList() {
-		List<PjReviewVO> reviewList = mapper.getReviewList();
+	public List<PjReviewVO> getReviewList(int pj_num) {
+		List<PjReviewVO> reviewList = mapper.getReviewList(pj_num);
 		return reviewList;
 	}
 
@@ -36,9 +36,26 @@ public class PjReviewServiceImpl implements PjReviewService {
 	}
 
 	@Override
-	public int deleteReview(PjReviewVO review) {
-		int res = mapper.deleteReview(review);
+	public int deleteReview(int pj_rv_num) {
+		int res = mapper.deleteReview(pj_rv_num);
 		return res;
 	}
 
+//	@Override
+//	public double getAvgScore(int pj_rv_score) {
+//		double res = mapper.getAvgScore(pj_rv_score);
+//		return res;
+//	}
+	
+	@Override
+	public int getCount(PjReviewVO review) {
+		int res = mapper.getCount(review);
+		return res;
+	}
+	
+	@Override
+	public int getTotalScore(PjReviewVO review) {
+		int res = mapper.getTotalScore(review);
+		return res;
+	}
 }
