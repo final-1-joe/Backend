@@ -13,4 +13,8 @@ public interface MyPjStatusService {
 	public int updateCompletedPj(String user_id, int pj_num);
 	public int deleteInprogressPj(String user_id, int pj_num);
 	public HashMap<String, Object> selectClient(String user_id, int pj_num);
+	public int countInprogress();
+	public int countCompleted();
+	public int countOngoing();
+	public int countFinished();
 }

@@ -71,4 +71,28 @@ public class MyPjStatusController {
 		HashMap<String, Object> dmInfo = myPjStatusServiceImpl.selectClient(user_id, pj_num);
 		return ResponseEntity.ok(dmInfo);
 	}
+	
+	@GetMapping("/admin/countInprogress")
+	public int countInprogress() {
+		int res = myPjStatusServiceImpl.countInprogress();
+		return res;
+	}
+	
+	@GetMapping("/admin/countCompleted")
+	public int countCompleted() {
+		int res = myPjStatusServiceImpl.countCompleted();
+		return res;
+	}
+	
+	@GetMapping("/admin/countOngoing")
+	public int countOngoing() {
+		int res = myPjStatusServiceImpl.countOngoing();
+		return res;
+	}
+	
+	@GetMapping("/admin/countFinished")
+	public int countFinished() {
+		int res = myPjStatusServiceImpl.countFinished();
+		return res;
+	}
 }
