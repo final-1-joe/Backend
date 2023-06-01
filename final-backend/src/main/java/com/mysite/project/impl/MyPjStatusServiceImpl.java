@@ -65,4 +65,28 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	public HashMap<String, Object> selectClient(String user_id, int pj_num) {
 		return mapper.selectClient(user_id, pj_num);
 	}
+	
+	@Override
+	public int countInprogress() {
+		int res = mapper.countInprogress();
+		return res;
+	}
+	
+	@Override
+	public int countCompleted() {
+		int res = mapper.countCompleted();
+		return res;
+	}
+	
+	@Override
+	public int countOngoing() {
+		int res = mapper.countOngoing();
+		return res;
+	}
+	
+	@Override
+	public int countFinished() {
+		int res = mapper.countFinished();
+		return res;
+	}
 }
