@@ -9,4 +9,5 @@ public class MyPjStatusVO {
 	private String pj_status;
 	private String pj_title;
 	private String pj_corpname;
+	private String pj_content;
 }

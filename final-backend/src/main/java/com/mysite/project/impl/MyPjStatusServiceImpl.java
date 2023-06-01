@@ -48,6 +48,12 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 		List<MyPjStatusVO> finishedlist = mapper.selectFinishedPj(user_id);
 		return finishedlist;
 	}
+	
+	@Override
+	public List<MyPjStatusVO> selectPjByClient(String user_id) {
+		List<MyPjStatusVO> pjListByClient = mapper.selectPjByClient(user_id);
+		return pjListByClient;
+	}
 
 	@Override
 	public int updateCompletedPj(String user_id, int pj_num) {
