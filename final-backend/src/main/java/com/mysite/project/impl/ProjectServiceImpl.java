@@ -52,16 +52,4 @@ public class ProjectServiceImpl implements ProjectService {
 		return res;
 	}
 
-	@Override
-	public int getCountStart() {
-		int res = mapper.getCountStart();
-		return res;
-	}
-	
-	@Override
-	public int getCountEnd() {
-		int res = mapper.getCountEnd();
-		return res;
-	}
-
 }

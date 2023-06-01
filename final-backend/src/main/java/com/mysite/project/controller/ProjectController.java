@@ -27,9 +27,8 @@ public class ProjectController {
 		return pjList;
 	}
 	
-
 	@RequestMapping(value = "/pjlist/pjdetail", method = RequestMethod.GET)
-  @ResponseBody
+    @ResponseBody
 	public ProjectVO projectDetail(int pj_num) {
 		ProjectVO vo = projectService.projectDetail(pj_num);
 		return vo;
@@ -41,7 +40,6 @@ public class ProjectController {
 	    List<ProjectVO> pjList = projectService.projectListTag(project);
 	    return pjList;
 	}
-	
 	
 	@RequestMapping(value = "/pjdetail/insert", method = RequestMethod.POST)
 	@ResponseBody
