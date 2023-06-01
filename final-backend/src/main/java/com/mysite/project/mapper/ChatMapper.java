@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
-import com.mysite.project.vo.ProjectVO;
+import com.mysite.project.dto.chat.ChatDto4;
 
 @Mapper
 public interface ChatMapper {
@@ -43,10 +43,11 @@ public interface ChatMapper {
 	public int joinRoom2(ChatDto2 chatDto2) throws Exception;
 	/* 빈 채팅방에 해당 유저들을 join 시킵니다. [create 채팅방 관련] */
 	
-	// 채팅방 나가기 기능 [ user_id와 chatroom_id를 가져와서 해당 user_id를 (알 수 없음) 으로 바꿈 ]
+	// 채팅방 나가기 기능 [ user_id와 chatroom_id를 가져와서 해당 user_id를 (알 수 없음) 으로 바꿈 ] [삭제 관련]
 	@Update ("UPDATE CHATJOIN_DB SET USER_ID = '(알 수 없음)' WHERE USER_ID = #{user_id} AND CHATROOM_ID = #{chatroom_id}")
 	public int quitRoom1(ChatDto chatDto) throws Exception;
 	
+	//채팅방을 나가면 해당 유저의 이름을 '(알 수 없음)' 으로 만드는 함수 [삭제 관련]
 	@Update ("UPDATE MESSAGE_DB SET USER_ID = '(알 수 없음)' WHERE USER_ID = #{user_id} AND CHATROOM_ID = #{chatroom_id}")
 	public int quitRoom2(ChatDto chatDto) throws Exception;
 	
@@ -54,4 +55,28 @@ public interface ChatMapper {
 	@Select ("SELECT pj_status FROM pj_status_db WHERE user_id = #{my_user_id} AND pj_num IN (SELECT pj_num FROM project_db WHERE user_id = #{your_user_id})")
 	public List<ChatDto3> getworkState(ChatDto2 chatDto2) throws Exception;
 	
+	// user_id 주면 리뷰데이터 집계해서 평균 내주는 함수
+	@Select ("SELECT AVG(fre_rv_score) FROM fre_review_db WHERE fre_rv_target = #{user_id}")
+	public Double getScore(String user_id) throws Exception;
+	
+	
+	
+	// user_id를 주면 알림이 있는지 알려주는 함수 [알림 관련]
+	@Select ("SELECT COUNT(*) AS new_messages, cj.chatroom_id\r\n"
+			+ "	FROM chatjoin_db cj\r\n"
+			+ "	INNER JOIN message_db m ON cj.chatroom_id = m.chatroom_id\r\n"
+			+ "	WHERE cj.user_id = #{user_id} AND m.message_date > cj.lastmessage\r\n"
+			+ "	GROUP BY cj.chatroom_id")
+	public List<ChatDto4> getnewState(ChatDto chatDto) throws Exception;
+	
+	// user_id 와 chatroom_id를 주면 chatjoin_db의 lastmessage를 업데이트 해주는 함수 [알림 관련]
+	@Update ("UPDATE chatjoin_db\r\n"
+			+ "SET LASTMESSAGE = (\r\n"
+			+ "  SELECT MAX(MESSAGE_DATE)\r\n"
+			+ "  FROM message_db\r\n"
+			+ "  WHERE CHATROOM_ID = #{chatroom_id}\r\n"
+			+ ")\r\n"
+			+ "WHERE USER_ID = #{user_id}\r\n"
+			+ "  AND CHATROOM_ID = #{chatroom_id}")
+	public int updatenewState(ChatDto chatDto) throws Exception;
 }

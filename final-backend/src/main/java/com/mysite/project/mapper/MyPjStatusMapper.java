@@ -39,7 +39,13 @@ public interface MyPjStatusMapper {
 	public List<MyPjStatusVO> selectFinishedPj(@Param("user_id") String user_id);
 	//완료된 프로젝트 조회
 	
-	@Update("UPDATE pj_status_db SET pj_status='completed' WHERE user_id=#{user_id} AND pj_num=#{pj_num}")
+	@Select("SELECT p.pj_num, p.pj_title, p.pj_content, s.pj_status FROM pj_status_db s JOIN project_db p "
+			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id}")
+	public List<MyPjStatusVO> selectPjByClient(@Param("user_id") String user_id);
+	//클라이언트 프로젝트관리 페이지에서 해당 클라이언트의 모든 프로젝트 상황 조회
+	
+	@Update("UPDATE pj_status_db SET pj_status='completed',pj_status_date = CURDATE() "
+			+ "WHERE user_id=#{user_id} AND pj_num=#{pj_num}")
 	public int updateCompletedPj(@Param("user_id") String user_id, @Param("pj_num")int pj_num);
 	//프리랜서가 승낙 버튼을 누르면 status가 모집완료인 completed로 변경되도록
 	
@@ -51,4 +57,21 @@ public interface MyPjStatusMapper {
 			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id} AND s.pj_num=#{pj_num} AND s.pj_status='inprogress'")
 	public HashMap<String, Object> selectClient(@Param("user_id")String user_id, @Param("pj_num")int pj_num);
 	//dm보낼 때 쓸 클라이언트 아이디 뽑아오기
+	
+	@Select("SELECT COUNT(DISTINCT pj_num) AS project_count FROM pj_status_db WHERE pj_status='inprogress'")
+	public int countInprogress();
+	//모집중인 프로젝트의 개수(중복 없이)
+	
+	@Select("SELECT COUNT(DISTINCT pj_num) AS project_count FROM pj_status_db WHERE pj_status='completed'")
+	public int countCompleted();
+	//모집완료된 프로젝트의 개수(중복 없이)
+	
+	@Select("SELECT COUNT(DISTINCT pj_num) AS project_count FROM pj_status_db WHERE pj_status='ongoing'")
+	public int countOngoing();
+	//진행중인 프로젝트의 개수(중복 없이)
+	
+	@Select("SELECT COUNT(DISTINCT pj_num) AS project_count FROM pj_status_db WHERE pj_status='finished'")
+	public int countFinished();
+	//진행완료된 프로젝트의 개수(중복 없이)
+
 }

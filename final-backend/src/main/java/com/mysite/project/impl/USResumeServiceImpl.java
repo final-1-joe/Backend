@@ -1,5 +1,7 @@
 package com.mysite.project.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.mysite.project.mapper.USResumeMapper;
@@ -28,6 +30,17 @@ public class USResumeServiceImpl implements USResumeService {
 	@Override
 	public void update(USResumeVO usresume) {
 		usrmapper.updateUSR(usresume);
+	}
+
+	@Override
+	public List<USResumeVO> USRList(USResumeVO usresume) {
+		return usrmapper.USRList(usresume);
+	}
+
+	@Override
+	public int usjgCount(USResumeVO usresume) {
+		
+		return usrmapper.usjgCount(usresume);
 	}
 
 }

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,12 @@ public class USResumeController {
 		this.usresumeService = usresumeService;
 	}
 	
+	@RequestMapping("/list")
+	public List<USResumeVO> USRList(@RequestBody USResumeVO usresume) {
+	    List<USResumeVO> userList = usresumeService.USRList(usresume);
+	    return userList;
+	}
+	
 	@RequestMapping("/select")
     public USResumeVO getFAQ(@RequestBody USResumeVO usresume) {
        return  this.usresumeService.getUSR(usresume);
@@ -44,6 +51,12 @@ public class USResumeController {
 	@RequestMapping("/update")
 	public void update(@RequestBody USResumeVO usresume) {
 	    this.usresumeService.update(usresume);
+	}
+	
+	@PostMapping("/usjgcount")
+	public int usjgCount(@RequestBody USResumeVO usresume) {
+		System.out.print(usresume);
+	    return this.usresumeService.usjgCount(usresume);
 	}
 	
 	@Value("${spring.servlet.multipart.location}")

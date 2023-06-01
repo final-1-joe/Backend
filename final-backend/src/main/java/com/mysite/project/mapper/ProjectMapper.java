@@ -28,7 +28,10 @@ public interface ProjectMapper {
 	
 	@Select("select * from project_db where pj_num=#{pj_num}")
 	public ProjectVO projectDetail(@Param("pj_num") int pj_num);
-
+	
+	@Select("SELECT count(*) FROM project_db WHERE pj_job = #{pj_job}")
+	public int pjjgCount(ProjectVO project);
+	
 	public List<ProjectVO> projectListTag(ProjectVO project);
 	
 	@Insert("insert into project_db(pj_title, pj_corpname, pj_work_form, pj_place, pj_start, pj_period, "

@@ -48,6 +48,12 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 		List<MyPjStatusVO> finishedlist = mapper.selectFinishedPj(user_id);
 		return finishedlist;
 	}
+	
+	@Override
+	public List<MyPjStatusVO> selectPjByClient(String user_id) {
+		List<MyPjStatusVO> pjListByClient = mapper.selectPjByClient(user_id);
+		return pjListByClient;
+	}
 
 	@Override
 	public int updateCompletedPj(String user_id, int pj_num) {
@@ -64,5 +70,29 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	@Override
 	public HashMap<String, Object> selectClient(String user_id, int pj_num) {
 		return mapper.selectClient(user_id, pj_num);
+	}
+	
+	@Override
+	public int countInprogress() {
+		int res = mapper.countInprogress();
+		return res;
+	}
+	
+	@Override
+	public int countCompleted() {
+		int res = mapper.countCompleted();
+		return res;
+	}
+	
+	@Override
+	public int countOngoing() {
+		int res = mapper.countOngoing();
+		return res;
+	}
+	
+	@Override
+	public int countFinished() {
+		int res = mapper.countFinished();
+		return res;
 	}
 }

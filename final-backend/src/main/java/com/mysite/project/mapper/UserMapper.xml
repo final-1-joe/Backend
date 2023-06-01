@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.mysite.project.mapper.UserMapper">
+
+<!-- 가져올 컬럼을 명시한 resultMap -->
+<resultMap id="userResultMap" type="com.mysite.project.vo.UserVO">
+  <id property="user_id" column="user_id"/>
+  <result property="user_pw" column="user_pw"/>
+  <result property="user_name" column="user_name"/>
+  <result property="user_birth" column="user_birth"/>
+  <result property="user_email" column="user_email"/>
+  <result property="user_tel" column="user_tel"/>
+  <result property="user_code" column="user_code"/>
+  <result property="user_orlicense" column="user_orlicense"/>
+  <result property="user_stlicense" column="user_stlicense"/>
+  <result property="user_resume" column="user_resume"/>
+  <result property="user_tag" column="user_tag"/>
+  <result property="user_createdate" column="user_createdate"/>
+</resultMap>
+
+<!-- user_id로 데이터를 찾고 user_code가 "free"인 경우 user_resume과 user_tag 값을 가져오는 쿼리 -->
+<select id="getUserStartData" resultMap="userResultMap">
+  SELECT *
+  FROM user_db
+  WHERE user_id = #{user_id}
+    AND (
+      (user_code = 'free' AND user_resume = 0 AND user_tag = 0)
+      OR (user_code = 'client' AND user_tag = 0)
+    )
+</select>
+
+<update id="updateUserRT" parameterType="com.mysite.project.vo.UserVO">
+  UPDATE user_db
+  SET user_resume = #{user_resume},
+      user_tag = #{user_tag}
+  WHERE user_id = #{user_id}
+</update>
+
+</mapper>
