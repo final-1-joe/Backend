@@ -11,6 +11,8 @@ public interface USResumeMapper {
 	
 	public List<USResumeVO> USRList(USResumeVO usresume);
 	
+	public List<USResumeVO> USRTag(USResumeVO usresume);
+	
 	public USResumeVO getUSR(USResumeVO usresume);
 
     public void insertUSR(USResumeVO usresume);

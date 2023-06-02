@@ -57,6 +57,37 @@
       </if>
     </where>
 </select>
+
+<select id="USRTag" resultType="com.mysite.project.vo.USResumeVO">
+    SELECT *
+    FROM us_resume
+    <where>
+      <if test="user_jg != ''">
+        AND user_jg = #{user_jg}
+      </if>
+      <if test="user_job != ''">
+          AND user_job LIKE CONCAT('%', #{user_job}, '%')
+       </if>
+	  <if test="user_career != 0 and user_career != ''">
+ 		 AND user_career >= #{user_career}
+	  </if>
+      <if test="user_ws != '' and user_ws != '상관없음'">
+  		AND user_ws = #{user_ws}
+	  </if>
+	  <if test="user_wt != '' and user_wt != '상관없음'">
+  		AND user_wt = #{user_wt}
+	  </if>
+	  <if test="user_js != '' and user_js != '상관없음'">
+  		AND user_js = #{user_js}
+	  </if>
+      <if test="user_skill != '[]'">
+        AND user_skill LIKE CONCAT('%', #{user_skill}, '%')
+      </if>
+	  <if test="user_pay != 0 and user_pay != ''">
+  		AND user_pay &lt;= #{user_pay}
+	  </if>
+    </where>
+</select>
   <!-- UPDATE -->
   <update id="updateUSR" parameterType="com.mysite.project.vo.USResumeVO">
     UPDATE us_resume SET

@@ -38,6 +38,13 @@ public class USResumeController {
 	    return userList;
 	}
 	
+	@RequestMapping("/tag")
+	public List<USResumeVO> USRTag(@RequestBody USResumeVO usresume) {
+		System.out.print(usresume);
+	    List<USResumeVO> userList = usresumeService.USRTag(usresume);
+	    return userList;
+	}
+	
 	@RequestMapping("/select")
     public USResumeVO getFAQ(@RequestBody USResumeVO usresume) {
        return  this.usresumeService.getUSR(usresume);
@@ -55,7 +62,6 @@ public class USResumeController {
 	
 	@PostMapping("/usjgcount")
 	public int usjgCount(@RequestBody USResumeVO usresume) {
-		System.out.print(usresume);
 	    return this.usresumeService.usjgCount(usresume);
 	}
 	

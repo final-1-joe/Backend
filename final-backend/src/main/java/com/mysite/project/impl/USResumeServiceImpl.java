@@ -36,11 +36,18 @@ public class USResumeServiceImpl implements USResumeService {
 	public List<USResumeVO> USRList(USResumeVO usresume) {
 		return usrmapper.USRList(usresume);
 	}
+	
+
 
 	@Override
 	public int usjgCount(USResumeVO usresume) {
 		
 		return usrmapper.usjgCount(usresume);
+	}
+
+	@Override
+	public List<USResumeVO> USRTag(USResumeVO usresume) {
+		return usrmapper.USRTag(usresume);
 	}
 
 }
