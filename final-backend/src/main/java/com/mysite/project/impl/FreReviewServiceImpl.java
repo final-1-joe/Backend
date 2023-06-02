@@ -18,8 +18,8 @@ public class FreReviewServiceImpl implements FreReviewService {
 	}
 
 	@Override
-	public List<FreReviewVO> getReviewList() {
-		List<FreReviewVO> reviewList = mapper.getReviewList();
+	public List<FreReviewVO> getReviewList(String fre_rv_target) {
+		List<FreReviewVO> reviewList = mapper.getReviewList(fre_rv_target);
 		return reviewList;
 	}
 
@@ -36,9 +36,20 @@ public class FreReviewServiceImpl implements FreReviewService {
 	}
 
 	@Override
-	public int deleteReview(FreReviewVO review) {
-		int res = mapper.deleteReview(review);
+	public int deleteReview(int fre_rv_num) {
+		int res = mapper.deleteReview(fre_rv_num);
+		return res;
+	}
+	
+	@Override
+	public int getCount(FreReviewVO review) {
+		int res = mapper.getCount(review);
 		return res;
 	}
 
+	@Override
+	public int getTotalScore(FreReviewVO review) {
+		int res = mapper.getTotalScore(review);
+		return res;
+	}
 }

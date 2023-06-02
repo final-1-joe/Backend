@@ -27,9 +27,8 @@ public class ProjectController {
 		return pjList;
 	}
 	
-
 	@RequestMapping(value = "/pjlist/pjdetail", method = RequestMethod.GET)
-  @ResponseBody
+    @ResponseBody
 	public ProjectVO projectDetail(int pj_num) {
 		ProjectVO vo = projectService.projectDetail(pj_num);
 		return vo;
@@ -41,14 +40,15 @@ public class ProjectController {
 	    List<ProjectVO> pjList = projectService.projectListTag(project);
 	    return pjList;
 	}
-	
-	@RequestMapping(value = "/pjtag")
+  
+  @RequestMapping(value = "/pjtag")
 	@ResponseBody
 	public List<ProjectVO> projectTag(@RequestBody ProjectVO project) {
 		System.out.print(project);
 	    List<ProjectVO> pjList = projectService.projectTag(project);
 	    return pjList;
 	}
+  
 	@RequestMapping(value = "/pjjgcount")
 	@ResponseBody
 	public int pjjgCount(@RequestBody ProjectVO project) {

@@ -15,4 +15,5 @@ public interface ProjectService {
 	public int insertProject(ProjectVO project);
 	public int updateProject(ProjectVO project);
 	public int deleteProject(ProjectVO project);
+	
 }
