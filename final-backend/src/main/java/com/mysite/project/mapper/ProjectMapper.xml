@@ -74,8 +74,8 @@
         AND pj_start >= #{pj_start}
       </if>
       <if test="pj_day != 0 and pj_day != ''">
-  AND pj_day &lt;= #{pj_day}
-</if>
+  		AND pj_day &lt;= #{pj_day}
+	  </if>
     </where>
 </select>
 </mapper>

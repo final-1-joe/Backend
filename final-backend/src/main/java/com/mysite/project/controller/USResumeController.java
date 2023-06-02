@@ -21,6 +21,7 @@ import org.springframework.web.util.UriUtils;
 import com.mysite.project.service.USResumeService;
 import com.mysite.project.vo.FileVO;
 import com.mysite.project.vo.USResumeVO;
+import com.mysite.project.vo.UserTagVO;
 
 @RequestMapping("/resume")
 @RestController
@@ -35,6 +36,13 @@ public class USResumeController {
 	@RequestMapping("/list")
 	public List<USResumeVO> USRList(@RequestBody USResumeVO usresume) {
 	    List<USResumeVO> userList = usresumeService.USRList(usresume);
+	    return userList;
+	}
+	
+	@RequestMapping("/tag")
+	public List<USResumeVO> USRTag(@RequestBody USResumeVO usresume) {
+		System.out.print(usresume);
+	    List<USResumeVO> userList = usresumeService.USRTag(usresume);
 	    return userList;
 	}
 	
@@ -55,7 +63,6 @@ public class USResumeController {
 	
 	@PostMapping("/usjgcount")
 	public int usjgCount(@RequestBody USResumeVO usresume) {
-		System.out.print(usresume);
 	    return this.usresumeService.usjgCount(usresume);
 	}
 	
