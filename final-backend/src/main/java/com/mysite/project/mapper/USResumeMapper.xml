@@ -46,11 +46,17 @@
       <if test="user_ws != ''">
         AND (user_ws = #{user_ws} or user_ws = "상관없음")
       </if>
+      <if test="user_wt != ''">
+        AND (user_wt = #{user_ws} or user_wt = "상관없음")
+      </if>
       <if test="user_js != ''">
         AND (user_js = #{user_js} )
       </if>
       <if test="user_nm != ''">
         AND user_nm LIKE CONCAT('%', #{user_nm}, '%')
+      </if>
+      <if test="user_job != ''">
+        AND user_job LIKE CONCAT('%', #{user_job}, '%')
       </if>
       <if test="user_skill != ''">
         AND user_skill LIKE CONCAT('%', #{user_skill}, '%')
