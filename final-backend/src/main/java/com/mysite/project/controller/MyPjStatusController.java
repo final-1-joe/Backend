@@ -23,6 +23,53 @@ public class MyPjStatusController {
 		this.myPjStatusServiceImpl = myPjStatusServiceImpl;
 	}
 	
+	@PostMapping("/apply")
+	public int applyPj(MyPjStatusVO vo) {
+		int res = myPjStatusServiceImpl.applyPj(vo);
+		return res;
+	}
+	//지원하기
+	
+	@PostMapping("/inprogress")
+	public int inprogressFree(MyPjStatusVO vo) {
+		int res = myPjStatusServiceImpl.inprogressFree(vo);
+		return res;
+	}
+	//제안하기
+	
+	@GetMapping("/auth/selectInprogresspj")
+	public List<MyPjStatusVO> selectByClientInprogress(String user_id) {
+		List<MyPjStatusVO> inprogressPjNum = myPjStatusServiceImpl.selectByClientInprogress(user_id);
+		return inprogressPjNum;
+	}
+	//제안할 때 내 프로젝트가 어떤 게 있는지 조회, int형으로만 여러 개 나올 수 있으니까 일단 List를 이용했습니다. 
+	//필요에 따라 고치셔도 상관 없습니다.
+	
+	@PostMapping("/auth/modifycompleted")
+	public int modifyCompletedPj(int pj_num) {
+		int res = myPjStatusServiceImpl.modifyCompletedPj(pj_num);
+		return res;
+	}
+	//status를 모집마감(completed)로 바꿈
+	
+	@PostMapping("/auth/modifyongoing")
+	public int modifyOngoingPj(int pj_num) {
+		int res = myPjStatusServiceImpl.modifyOngoingPj(pj_num);
+		//혹시 안되면 위에 String user_id, pj_num 다 지우시고 @RequestBody MyPjStatusVO vo로 바꾸시고
+		//int res = myPjStatusServiceImpl.modifyOngoingPj(vo.getPj_num());
+		return res;
+	}
+	//status를 진행중(ongoing)으로 바꿈
+	
+	@PostMapping("/auth/modifyfinished")
+	public int modifyFinishedPj(int pj_num) {
+		int res = myPjStatusServiceImpl.modifyFinishedPj(pj_num);
+		//혹시 안되면 위에 String user_id, pj_num 다 지우시고 @RequestBody MyPjStatusVO vo로 바꾸시고
+		//int res = myPjStatusServiceImpl.modifyFinishedPj(vo.getPj_num());
+		return res;
+	}
+	//status를 완료(finished)로 바꿈, completed(모집완료)는 하단에 있음
+	
 	@GetMapping("/auth/ongoingpj")
 	public List<MyPjStatusVO> selectOngoingPj(String user_id) {
 		List<MyPjStatusVO> ongoinglist = myPjStatusServiceImpl.selectOngoingPj(user_id);
@@ -59,9 +106,14 @@ public class MyPjStatusController {
 		return pjListByClient;
 	}
 	
+	@PostMapping("/auth/freelistClient")
+	public List<MyPjStatusVO> selectFreeByClient(@RequestBody MyPjStatusVO vo) {
+		List<MyPjStatusVO> freeListByClient = myPjStatusServiceImpl.selectFreeByClient(vo.getUser_id(), vo.getPj_num());
+		return freeListByClient;
+	}
+	
 	@PutMapping("/auth/updatecompleted")
 	public int updateCompletedPj(@RequestBody MyPjStatusVO vo) {
-		System.out.println("pj_num=>"+vo.getPj_num());
 		int res = myPjStatusServiceImpl.updateCompletedPj(vo.getUser_id(), vo.getPj_num());
 		return res;
 	}
