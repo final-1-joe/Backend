@@ -29,6 +29,11 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	
 	@Override
+	public List<ProjectVO> projectTag(ProjectVO project) {
+		return mapper.projectTag(project);
+	}
+	
+	@Override
 	public ProjectVO projectDetail(int pj_num) {
 		ProjectVO vo = mapper.projectDetail(pj_num);
 		return vo;

@@ -45,14 +45,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserVO getUserStartData(UserVO vo) {
+	public int getUserStartData(UserVO vo) {
 		return userMapper.getUserStartData(vo);
+	}
+	
+	@Override
+	public int getUserStartDataRe(UserVO vo) {
+		return userMapper.getUserStartDataRe(vo);
 	}
 
 	@Override
-	public void updateUserRT(UserVO vo) {
-		userMapper.updateUserRT(vo);
-		
+	public void updateUserR(UserVO vo) {
+		userMapper.updateUserR(vo);
+	}
+	
+	@Override
+	public void updateUserT(UserVO vo) {
+		userMapper.updateUserT(vo);
 	}
 
 	@Override

@@ -20,9 +20,11 @@ import com.mysite.project.vo.UserVO;
 		@Select("select count(*) from user_db where user_id = #{user_id}")
 		public int userCheck(String user_id);
 		
-		public UserVO getUserStartData(UserVO vo);
+		public int getUserStartData(UserVO vo);
+		public int getUserStartDataRe(UserVO vo);
 		
-		public void updateUserRT(UserVO vo);
+		public void updateUserR(UserVO vo);
+		public void updateUserT(UserVO vo);
 		
 		@Select("SELECT count(*) FROM user_db WHERE user_code =  #{user_code} AND YEAR(user_createdate) = #{year} AND MONTH(user_createdate) = #{month}")
 		public int Userdate(UserDateVO vo);

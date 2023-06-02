@@ -7,11 +7,11 @@ import lombok.Data;
 @Data
 public class FretagVO {
 	private String user_id;
-    private String fre_jg;
-    private String fre_job;
-    private String fre_ws;
-    private String fre_wt;
-    private int fre_pay;
-    private Date fre_stdy;
-    private int fre_mth;
+    private String pj_job;
+    private String pj_jobs;
+    private String pj_work_form;
+    private String pj_place;
+    private int pj_pay;
+    private Date pj_start;
+    private int pj_day;
 }

@@ -40,7 +40,15 @@ public class ProjectController {
 	    List<ProjectVO> pjList = projectService.projectListTag(project);
 	    return pjList;
 	}
-
+  
+  @RequestMapping(value = "/pjtag")
+	@ResponseBody
+	public List<ProjectVO> projectTag(@RequestBody ProjectVO project) {
+		System.out.print(project);
+	    List<ProjectVO> pjList = projectService.projectTag(project);
+	    return pjList;
+	}
+  
 	@RequestMapping(value = "/pjjgcount")
 	@ResponseBody
 	public int pjjgCount(@RequestBody ProjectVO project) {

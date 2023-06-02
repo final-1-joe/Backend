@@ -54,7 +54,30 @@
     </where>
 </select>
 
-
+<select id="projectTag" parameterType="com.mysite.project.vo.ProjectVO" resultMap="projectResultMap">
+    SELECT *
+    FROM project_db
+    <where>
+      <if test="pj_job != ''">
+        AND pj_job = #{pj_job}
+      </if>
+      <if test="pj_work_form != '' and pj_work_form != '상관없음'">
+  		AND pj_work_form = #{pj_work_form}
+	  </if>
+	  <if test="pj_place != ''">
+        AND pj_place = #{pj_place}
+      </if>
+      <if test="pj_pay != 0">
+        AND REGEXP_REPLACE(pj_pay, '[^0-9]', '') >= #{pj_pay}
+      </if>
+      <if test="pj_start != null">
+        AND pj_start >= #{pj_start}
+      </if>
+      <if test="pj_day != 0 and pj_day != ''">
+  AND pj_day &lt;= #{pj_day}
+</if>
+    </where>
+</select>
 </mapper>
 
 <!-- ProjectMapper.xml -->

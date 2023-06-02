@@ -53,9 +53,14 @@ public class UserController {
     	return res;
     }
     
-    @GetMapping("/checkstart")
-    public UserVO getUserStartData(@RequestBody UserVO vo) {
+    @RequestMapping("/checkstart")
+    public int getUserStartData(@RequestBody UserVO vo) {
     	return userService.getUserStartData(vo);
+    }
+    
+    @RequestMapping("/checkstartRe")
+    public int getUserStartDataRe(@RequestBody UserVO vo) {
+    	return userService.getUserStartDataRe(vo);
     }
     
     @PostMapping("/getuser")
@@ -64,9 +69,14 @@ public class UserController {
     	return userService.getUserById(id);
     }
     
-    @PostMapping("/updatert")
-    public void updateUserRT(@RequestBody UserVO vo){
-    	userService.updateUserRT(vo);
+    @PostMapping("/updater")
+    public void updateUserR(@RequestBody UserVO vo){
+    	userService.updateUserR(vo);
+    }
+    
+    @PostMapping("/updatet")
+    public void updateUserT(@RequestBody UserVO vo){
+    	userService.updateUserT(vo);
     }
     
     @PostMapping ("/userdate")
