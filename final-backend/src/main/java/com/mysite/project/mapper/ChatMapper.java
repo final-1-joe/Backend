@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -20,7 +21,7 @@ public interface ChatMapper {
 	public int insertMessage(ChatDto chatDto) throws Exception;
 	
 	// 로그인 세션 정보를 바탕으로 해당 사용자와 대화하는 사람들과 그 채팅방 번호들을 select, 추가로 해당 채팅방의 마지막 메시지도 select함
-	@Select ("SELECT mj.user_id, mj.chatroom_id, m.message_content FROM chatjoin_db mj LEFT JOIN (SELECT chatroom_id, MAX(message_id) AS max_message_id FROM message_db GROUP BY chatroom_id) last_message ON mj.chatroom_id = last_message.chatroom_id LEFT JOIN message_db m ON last_message.max_message_id = m.message_id WHERE mj.chatroom_id IN (SELECT chatroom_id FROM chatjoin_db WHERE user_id = #{user_id}) AND mj.user_id != #{user_id}")
+	@Select("SELECT u.user_id, u.user_name, mj.chatroom_id, m.message_content FROM chatjoin_db mj LEFT JOIN (SELECT chatroom_id, MAX(message_id) AS max_message_id FROM message_db GROUP BY chatroom_id) last_message ON mj.chatroom_id = last_message.chatroom_id LEFT JOIN message_db m ON last_message.max_message_id = m.message_id INNER JOIN user_db u ON mj.user_id = u.user_id WHERE mj.chatroom_id IN (SELECT chatroom_id FROM chatjoin_db WHERE user_id = #{user_id}) AND mj.user_id != #{user_id}")
 	public List<ChatDto> getChatRoom_id(ChatDto chatDto) throws Exception;
 	
 	// 채팅방 누르면 해당 방 번호를 토대로 DB에서 그간 메시지 내역들을 select 
@@ -55,11 +56,15 @@ public interface ChatMapper {
 	@Select ("SELECT pj_status FROM pj_status_db WHERE user_id = #{my_user_id} AND pj_num IN (SELECT pj_num FROM project_db WHERE user_id = #{your_user_id})")
 	public List<ChatDto3> getworkState(ChatDto2 chatDto2) throws Exception;
 	
-	// user_id 주면 리뷰데이터 집계해서 평균 내주는 함수
+	// user_id 주면 리뷰데이터 집계해서 평균 내주는 함수 (프리랜서 용)
 	@Select ("SELECT AVG(fre_rv_score) FROM fre_review_db WHERE fre_rv_target = #{user_id}")
 	public Double getScore(String user_id) throws Exception;
 	
-	
+	// user_id 주면 리뷰데이터 집계해서 평균 내주는 함수 (클라이언트 용)
+	@Select ("SELECT AVG(pj_rv_score)\r\n"
+			+ "FROM pj_review_db\r\n"
+			+ "WHERE pj_num IN (SELECT pj_num FROM project_db WHERE user_id = #{user_id})")
+	public Double getScore2(String user_id) throws Exception;
 	
 	// user_id를 주면 알림이 있는지 알려주는 함수 [알림 관련]
 	@Select ("SELECT COUNT(*) AS new_messages, cj.chatroom_id\r\n"

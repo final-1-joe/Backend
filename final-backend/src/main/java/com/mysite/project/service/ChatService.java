@@ -2,6 +2,8 @@ package com.mysite.project.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
@@ -19,6 +21,7 @@ public interface ChatService {
 	public int quitRoom2(ChatDto chatDto) throws Exception;
 	public List<ChatDto3> getworkState(ChatDto2 chatDto2) throws Exception;
 	public double getScore(String user_id) throws Exception;
+	public double getScore2(String user_id) throws Exception;
 	public List<ChatDto4> getnewState(ChatDto chatDto) throws Exception;
 	public int updatenewState(ChatDto chatDto) throws Exception;
 }

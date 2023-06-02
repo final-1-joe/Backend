@@ -154,6 +154,11 @@ public class MessageController {
 			return chatService.getScore(user_id);
 		}
 		
+		@GetMapping("/score2")
+		public double getScore2(@RequestParam("user_id") String user_id) throws Exception {
+			return chatService.getScore2(user_id);
+		}
+		
 		@PostMapping("/alarm")
 		public List<ChatDto4> getnewState(@RequestBody ChatDto chatDto) throws Exception {
 			return chatService.getnewState(chatDto);
