@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mysite.project.vo.USResumeVO;
-import com.mysite.project.vo.UserTagVO;
 
 @Mapper
 public interface USResumeMapper {

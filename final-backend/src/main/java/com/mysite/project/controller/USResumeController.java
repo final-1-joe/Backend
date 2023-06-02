@@ -21,7 +21,6 @@ import org.springframework.web.util.UriUtils;
 import com.mysite.project.service.USResumeService;
 import com.mysite.project.vo.FileVO;
 import com.mysite.project.vo.USResumeVO;
-import com.mysite.project.vo.UserTagVO;
 
 @RequestMapping("/resume")
 @RestController

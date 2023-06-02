@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.mysite.project.mapper.USResumeMapper;
 import com.mysite.project.service.USResumeService;
 import com.mysite.project.vo.USResumeVO;
-import com.mysite.project.vo.UserTagVO;
 
 @Service("usresumeService")
 public class USResumeServiceImpl implements USResumeService {
