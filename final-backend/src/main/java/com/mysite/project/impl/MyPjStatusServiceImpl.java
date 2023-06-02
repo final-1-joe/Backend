@@ -20,6 +20,42 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	}
 	
 	@Override
+	public int applyPj(MyPjStatusVO vo) {
+		int res = mapper.applyPj(vo);
+		return res;
+	}
+	
+	@Override
+	public int inprogressFree(MyPjStatusVO vo) {
+		int res = mapper.inprogressFree(vo);
+		return res;
+	}
+	
+	@Override
+	public List<MyPjStatusVO> selectByClientInprogress(String user_id) {
+		List<MyPjStatusVO> inprogressPjNum = mapper.selectByClientInprogress(user_id);
+		return inprogressPjNum;
+	}
+	
+	@Override
+	public int modifyCompletedPj(int pj_num) {
+		int res = mapper.modifyCompletedPj(pj_num);
+		return res;
+	}
+	
+	@Override
+	public int modifyOngoingPj(int pj_num) {
+		int res = mapper.modifyOngoingPj(pj_num);
+		return res;
+	}
+	
+	@Override
+	public int modifyFinishedPj(int pj_num) {
+		int res = mapper.modifyFinishedPj(pj_num);
+		return res;
+	}
+	
+	@Override
 	public List<MyPjStatusVO> selectOngoingPj(String user_id) {
 		List<MyPjStatusVO> ongoinglist = mapper.selectOngoingPj(user_id);
 		return ongoinglist;
@@ -53,6 +89,12 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	public List<MyPjStatusVO> selectPjByClient(String user_id) {
 		List<MyPjStatusVO> pjListByClient = mapper.selectPjByClient(user_id);
 		return pjListByClient;
+	}
+	
+	@Override
+	public List<MyPjStatusVO> selectFreeByClient(String user_id, int pj_num) {
+		List<MyPjStatusVO> freeListByClient = mapper.selectFreeByClient(user_id, pj_num);
+		return freeListByClient;
 	}
 
 	@Override

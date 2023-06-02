@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -13,6 +14,32 @@ import com.mysite.project.vo.MyPjStatusVO;
 
 @Mapper
 public interface MyPjStatusMapper {
+	
+	@Insert("INSERT INTO pj_status_db(user_id,pj_num,pj_status,pj_status_date) VALUES (#{user_id},#{pj_num},'apply',CURDATE())")
+	public int applyPj(MyPjStatusVO vo);
+	//지원하기를 누르면 status db에 지원자 데이터 생성
+	
+	@Insert("INSERT INTO pj_status_db(user_id,pj_num,pj_status,pj_status_date) VALUES (#{user_id},#{pj_num},'inprogress',CURDATE())")
+	public int inprogressFree(MyPjStatusVO vo);
+	//제안하기를 누르면 status db에 제안을 넣은 데이터 생성(프론트단에서 정보를 어떻게 받아오느냐가 관건이 될 것 같아요)
+	
+	@Select("SELECT pj_num FROM pj_status_db WHERE user_id=#{user_id} AND pj_status='inprogress'")
+	public List<MyPjStatusVO> selectByClientInprogress(@Param("user_id") String user_id);
+	//혹시 몰라서 만들어둡니다. 클라이언트가 모집중인 프로젝트의 pj_num 조회
+	
+	@Update("UPDATE pj_status_db SET pj_status='completed', pj_status_date=CURDATE() WHERE pj_num=#{pj_num}")
+	public int modifyCompletedPj(@Param("pj_num") int pj_num);
+	//모집마감 프로젝트로 상태 및 날짜 변경
+	
+	@Update("UPDATE pj_status_db SET pj_status='ongoing', pj_status_date=CURDATE() "
+			+ "WHERE pj_num=#{pj_num}")
+	public int modifyOngoingPj(@Param("pj_num")int pj_num);
+	//진행중 프로젝트로 상태 및 날짜 변경
+	
+	@Update("UPDATE pj_status_db SET pj_status='finished', pj_status_date=CURDATE() "
+			+ "WHERE pj_num=#{pj_num}")
+	public int modifyFinishedPj(@Param("pj_num")int pj_num);
+	//완료 프로젝트로 상태 및 날짜 변경
 	
 	@Select("SELECT p.pj_num, p.pj_title, p.pj_corpname FROM project_db p JOIN pj_status_db s "
 			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id} AND s.pj_status='ongoing'")
@@ -43,6 +70,11 @@ public interface MyPjStatusMapper {
 			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id}")
 	public List<MyPjStatusVO> selectPjByClient(@Param("user_id") String user_id);
 	//클라이언트 프로젝트관리 페이지에서 해당 클라이언트의 모든 프로젝트 상황 조회
+	
+	@Select("SELECT p.*, r.user_nm FROM pj_status_db p JOIN us_resume r "
+			+ "ON p.user_id=r.user_id WHERE p.user_id NOT IN (#{user_id}) and pj_num=#{pj_num}")
+	public List<MyPjStatusVO> selectFreeByClient(@Param("user_id") String user_id, @Param("pj_num") int pj_num);
+	//클라이언트 모집현황관리 페이지에서 해당 클라이언트의 프로젝트에 함께 하고 있는 프리랜서 status 조회
 	
 	@Update("UPDATE pj_status_db SET pj_status='completed',pj_status_date = CURDATE() "
 			+ "WHERE user_id=#{user_id} AND pj_num=#{pj_num}")
