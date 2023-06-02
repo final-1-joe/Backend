@@ -9,6 +9,7 @@ public interface ProjectService {
 
 	public List<ProjectVO> projectList();
 	public List<ProjectVO> projectListTag(ProjectVO project);
+	public List<ProjectVO> projectTag(ProjectVO project);
 	public ProjectVO projectDetail(int pj_num);
 	public int pjjgCount(ProjectVO project);
 	public int insertProject(ProjectVO project);

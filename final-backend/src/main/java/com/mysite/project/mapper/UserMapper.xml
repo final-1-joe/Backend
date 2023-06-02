@@ -21,20 +21,31 @@
 </resultMap>
 
 <!-- user_id로 데이터를 찾고 user_code가 "free"인 경우 user_resume과 user_tag 값을 가져오는 쿼리 -->
-<select id="getUserStartData" resultMap="userResultMap">
-  SELECT *
+<select id="getUserStartData" parameterType="com.mysite.project.vo.UserVO">
+  SELECT count(*)
   FROM user_db
   WHERE user_id = #{user_id}
     AND (
-      (user_code = 'free' AND user_resume = 0 AND user_tag = 0)
+      (user_code = 'free' AND user_tag = 0)
       OR (user_code = 'client' AND user_tag = 0)
     )
 </select>
 
-<update id="updateUserRT" parameterType="com.mysite.project.vo.UserVO">
+<select id="getUserStartDataRe" parameterType="com.mysite.project.vo.UserVO">
+  SELECT count(*)
+  FROM user_db
+  WHERE user_id = #{user_id}
+    AND 
+      user_code = 'free' AND user_resume = 0
+</select>
+
+<update id="updateUserR" parameterType="com.mysite.project.vo.UserVO">
+  UPDATE user_db SET user_resume = #{user_resume}
+  WHERE user_id = #{user_id}
+</update>
+<update id="updateUserT" parameterType="com.mysite.project.vo.UserVO">
   UPDATE user_db
-  SET user_resume = #{user_resume},
-      user_tag = #{user_tag}
+  SET user_tag = #{user_tag}
   WHERE user_id = #{user_id}
 </update>
 

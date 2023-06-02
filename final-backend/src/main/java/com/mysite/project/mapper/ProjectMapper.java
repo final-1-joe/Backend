@@ -34,6 +34,8 @@ public interface ProjectMapper {
 	
 	public List<ProjectVO> projectListTag(ProjectVO project);
 	
+	public List<ProjectVO> projectTag(ProjectVO project);
+	
 	@Insert("insert into project_db(pj_title, pj_corpname, pj_work_form, pj_place, pj_start, pj_period, "
 			+ "pj_job, pj_pay, pj_end, pj_day, pj_pick, pj_skill, pj_content, pj_date, user_id) "
 			+ "values(#{pj_title}, #{pj_corpname}, #{pj_work_form},  #{pj_place}, #{pj_start}, #{pj_period}, "
