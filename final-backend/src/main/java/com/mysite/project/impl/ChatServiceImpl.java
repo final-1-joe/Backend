@@ -82,6 +82,14 @@ public class ChatServiceImpl implements ChatService {
 	}
 	
 	@Override
+	public double getScore2(String user_id) throws Exception {
+		if (chatMapper.getScore2(user_id)==null) {
+			return 0;
+		}
+		return chatMapper.getScore2(user_id);
+	}
+	
+	@Override
 	public List<ChatDto4> getnewState(ChatDto chatDto) throws Exception {
 		return chatMapper.getnewState(chatDto);
 	}
@@ -90,4 +98,5 @@ public class ChatServiceImpl implements ChatService {
 	public int updatenewState(ChatDto chatDto) throws Exception {
 		return chatMapper.updatenewState(chatDto);
 	}
+	
 }
