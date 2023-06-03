@@ -51,6 +51,9 @@
       <if test="pj_title != ''">
         AND pj_title LIKE CONCAT('%', #{pj_title}, '%')
       </if>
+      <if test="pj_place != ''">
+        AND pj_place = #{pj_place}
+      </if>
     </where>
 </select>
 
