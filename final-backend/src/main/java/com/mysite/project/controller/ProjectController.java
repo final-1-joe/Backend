@@ -44,7 +44,6 @@ public class ProjectController {
   @RequestMapping(value = "/pjtag")
 	@ResponseBody
 	public List<ProjectVO> projectTag(@RequestBody ProjectVO project) {
-		System.out.print(project);
 	    List<ProjectVO> pjList = projectService.projectTag(project);
 	    return pjList;
 	}

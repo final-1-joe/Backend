@@ -74,7 +74,7 @@
         AND REGEXP_REPLACE(pj_pay, '[^0-9]', '') >= #{pj_pay}
       </if>
       <if test="pj_start != null">
-        AND pj_start >= #{pj_start}
+        AND pj_start = #{pj_start}
       </if>
       <if test="pj_day != 0 and pj_day != ''">
   		AND pj_day &lt;= #{pj_day}

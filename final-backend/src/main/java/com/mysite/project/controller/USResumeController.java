@@ -40,7 +40,6 @@ public class USResumeController {
 	
 	@RequestMapping("/tag")
 	public List<USResumeVO> USRTag(@RequestBody USResumeVO usresume) {
-		System.out.print(usresume);
 	    List<USResumeVO> userList = usresumeService.USRTag(usresume);
 	    return userList;
 	}
