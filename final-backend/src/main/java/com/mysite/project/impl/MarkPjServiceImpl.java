@@ -23,5 +23,11 @@ public class MarkPjServiceImpl implements MarkPjService {
 		List<MyMarkPjVO> markPjList = mapper.selectMarkPj(user_id);
 		return markPjList;
 	}
+	
+	@Override
+	public int registerMarkPj(MarkPjVO vo) {
+		int res = mapper.registerMarkPj(vo);
+		return res;
+	}
 
 }
