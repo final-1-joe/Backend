@@ -3,6 +3,8 @@ package com.mysite.project.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,5 +25,11 @@ public class MarkPjController {
 	public List<MyMarkPjVO> selectMarkPj(@RequestParam("user_id") String user_id) {
 		List<MyMarkPjVO> markPjList = markPjServiceImpl.selectMarkPj(user_id);
 		return markPjList;
+	}
+	
+	@PostMapping("/auth/insertmartp")
+	public int insertMarkPj(@RequestBody MarkPjVO vo) {
+		int res = markPjServiceImpl.insertMarkPj(vo);
+		return res;
 	}
 }

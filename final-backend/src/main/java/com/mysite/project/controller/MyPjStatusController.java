@@ -24,7 +24,7 @@ public class MyPjStatusController {
 	}
 	
 	@PostMapping("/apply")
-	public int applyPj(MyPjStatusVO vo) {
+	public int applyPj(@RequestBody MyPjStatusVO vo) {
 		int res = myPjStatusServiceImpl.applyPj(vo);
 		return res;
 	}
