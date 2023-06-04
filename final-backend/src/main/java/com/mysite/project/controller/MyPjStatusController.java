@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,29 +47,37 @@ public class MyPjStatusController {
 	//필요에 따라 고치셔도 상관 없습니다.
 	
 	@PostMapping("/auth/modifycompleted")
-	public int modifyCompletedPj(int pj_num) {
-		int res = myPjStatusServiceImpl.modifyCompletedPj(pj_num);
+	public int modifyCompletedPj(@RequestBody MyPjStatusVO vo) {
+		int res = myPjStatusServiceImpl.modifyCompletedPj(vo.getPj_num());
 		return res;
 	}
 	//status를 모집마감(completed)로 바꿈
 	
 	@PostMapping("/auth/modifyongoing")
-	public int modifyOngoingPj(int pj_num) {
-		int res = myPjStatusServiceImpl.modifyOngoingPj(pj_num);
-		//혹시 안되면 위에 String user_id, pj_num 다 지우시고 @RequestBody MyPjStatusVO vo로 바꾸시고
-		//int res = myPjStatusServiceImpl.modifyOngoingPj(vo.getPj_num());
+	public int modifyOngoingPj(@RequestBody MyPjStatusVO vo) {
+		int res = myPjStatusServiceImpl.modifyOngoingPj(vo.getPj_num());
 		return res;
 	}
 	//status를 진행중(ongoing)으로 바꿈
 	
 	@PostMapping("/auth/modifyfinished")
-	public int modifyFinishedPj(int pj_num) {
-		int res = myPjStatusServiceImpl.modifyFinishedPj(pj_num);
-		//혹시 안되면 위에 String user_id, pj_num 다 지우시고 @RequestBody MyPjStatusVO vo로 바꾸시고
-		//int res = myPjStatusServiceImpl.modifyFinishedPj(vo.getPj_num());
+	public int modifyFinishedPj(@RequestBody MyPjStatusVO vo) {
+		int res = myPjStatusServiceImpl.modifyFinishedPj(vo.getPj_num());
 		return res;
 	}
 	//status를 완료(finished)로 바꿈, completed(모집완료)는 하단에 있음
+	
+	@PostMapping("/auth/modifycompletedfree")
+	public int updateCompletedFree(@RequestBody MyPjStatusVO vo) {
+		int res = myPjStatusServiceImpl.updateCompletedFree(vo.getUser_id(), vo.getPj_num());
+		return res;
+	}
+	
+	@PostMapping("/auth/deletedfree")
+	public int deletedFree(@RequestBody MyPjStatusVO vo) {
+		int res = myPjStatusServiceImpl.deletedFree(vo.getUser_id(), vo.getPj_num());
+		return res;
+	}
 	
 	@GetMapping("/auth/ongoingpj")
 	public List<MyPjStatusVO> selectOngoingPj(String user_id) {
@@ -106,7 +115,7 @@ public class MyPjStatusController {
 		return pjListByClient;
 	}
 	
-	@PostMapping("/auth/freelistClient")
+	@RequestMapping(value="/auth/freelistClient")
 	public List<MyPjStatusVO> selectFreeByClient(@RequestBody MyPjStatusVO vo) {
 		List<MyPjStatusVO> freeListByClient = myPjStatusServiceImpl.selectFreeByClient(vo.getUser_id(), vo.getPj_num());
 		return freeListByClient;
