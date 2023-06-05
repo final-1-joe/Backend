@@ -17,8 +17,8 @@ public interface PjReviewMapper {
 	@Select("select * from pj_review_db where pj_num=#{pj_num}")
 	public List<PjReviewVO> getReviewList(@Param("pj_num") int pj_num); // 리뷰 리스트
 	
-	@Insert("insert into pj_review_db (user_id, pj_rv_score, pj_rv_content) "
-			+ "values (#{user_id}, #{pj_rv_score}, #{pj_rv_content})")
+	@Insert("insert into pj_review_db (user_id, pj_num, pj_rv_score, pj_rv_content) "
+			+ "values (#{user_id}, #{pj_num}, #{pj_rv_score}, #{pj_rv_content})")
 	public int insertReview(PjReviewVO review); // 리뷰 등록
 	
 	@Update("update pj_review_db set pj_rv_score=#{pj_rv_score}, pj_rv_content=#{pj_rv_content}, "
