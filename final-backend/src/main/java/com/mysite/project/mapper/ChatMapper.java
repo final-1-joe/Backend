@@ -12,6 +12,7 @@ import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
 import com.mysite.project.dto.chat.ChatDto4;
+import com.mysite.project.dto.chat.ChatDto5;
 
 @Mapper
 public interface ChatMapper {
@@ -84,4 +85,18 @@ public interface ChatMapper {
 			+ "WHERE USER_ID = #{user_id}\r\n"
 			+ "  AND CHATROOM_ID = #{chatroom_id}")
 	public int updatenewState(ChatDto chatDto) throws Exception;
+	
+	// userIds라는 배열에 user_id로 구성된 배열을 넣고, 해당 user_id에 대한 user_code 가져오기 
+	@Select({
+		"<script>",
+        "SELECT user_id, user_code",
+        "FROM user_db",
+        "WHERE user_id IN",
+        "<foreach item='userID' collection='userIds' open='(' separator=',' close=')'>",
+        "#{userID}",
+        "</foreach>",
+        "</script>"
+    })
+	public List<ChatDto5> getUserCodes(@Param("userIds") List<String> userIds) throws Exception;
+	
 }

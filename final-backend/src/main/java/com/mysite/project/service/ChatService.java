@@ -2,12 +2,11 @@ package com.mysite.project.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
 import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
 import com.mysite.project.dto.chat.ChatDto4;
+import com.mysite.project.dto.chat.ChatDto5;
 
 public interface ChatService {
 	public int insertMessage(ChatDto chatDto) throws Exception;
@@ -24,4 +23,5 @@ public interface ChatService {
 	public double getScore2(String user_id) throws Exception;
 	public List<ChatDto4> getnewState(ChatDto chatDto) throws Exception;
 	public int updatenewState(ChatDto chatDto) throws Exception;
+	public List<ChatDto5> getUserCodes(List<String> userIds) throws Exception;
 }

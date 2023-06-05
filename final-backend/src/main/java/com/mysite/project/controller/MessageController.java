@@ -26,6 +26,7 @@ import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
 import com.mysite.project.dto.chat.ChatDto4;
+import com.mysite.project.dto.chat.ChatDto5;
 import com.mysite.project.service.ChatService;
 
 import lombok.RequiredArgsConstructor;
@@ -167,6 +168,11 @@ public class MessageController {
 		@PostMapping("/updatealarm")
 		public int updatenewState(@RequestBody ChatDto chatDto) throws Exception {
 			return chatService.updatenewState(chatDto);
+		}
+		
+		@PostMapping("/getcodes")
+		public List<ChatDto5> getUserCodes(@RequestBody List<String> userIds) throws Exception {
+			return chatService.getUserCodes(userIds);
 		}
 		
 }
