@@ -13,4 +13,6 @@ public class MyPjStatusVO {
 	private String pj_corpname;
 	private String pj_content;
 	private String user_nm;
+	private String pj_start;
+	private String pj_end;
 }
