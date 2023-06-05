@@ -15,7 +15,7 @@ import com.mysite.project.vo.MyPjStatusVO;
 @Mapper
 public interface MyPjStatusMapper {
 	
-	@Insert("INSERT INTO pj_status_db(user_id,pj_num,pj_status,pj_status_date) VALUES (#{user_id},#{pj_num},'apply',CURDATE())")
+	@Insert("INSERT INTO pj_status_db(user_id,pj_num,pj_status,pj_status_date) VALUES (#{user_id},#{pj_num},'inprogress',CURDATE())")
 	public int applyPj(MyPjStatusVO vo);
 	//지원하기를 누르면 status db에 지원자 데이터 생성
 	
