@@ -9,6 +9,7 @@ import com.mysite.project.dto.chat.ChatDto;
 import com.mysite.project.dto.chat.ChatDto2;
 import com.mysite.project.dto.chat.ChatDto3;
 import com.mysite.project.dto.chat.ChatDto4;
+import com.mysite.project.dto.chat.ChatDto5;
 import com.mysite.project.mapper.ChatMapper;
 import com.mysite.project.service.ChatService;
 
@@ -97,6 +98,11 @@ public class ChatServiceImpl implements ChatService {
 	@Override
 	public int updatenewState(ChatDto chatDto) throws Exception {
 		return chatMapper.updatenewState(chatDto);
+	}
+	
+	@Override
+	public List<ChatDto5> getUserCodes(List<String> userIds) throws Exception {
+		return chatMapper.getUserCodes(userIds);
 	}
 	
 }
