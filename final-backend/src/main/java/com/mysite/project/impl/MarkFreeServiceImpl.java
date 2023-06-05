@@ -24,4 +24,9 @@ public class MarkFreeServiceImpl implements MarkFreeService {
 		return markFreeList;
 	}
 
+	@Override
+	public int registerMarkFree(MarkFreeVO vo) {
+		int res = mapper.registerMarkFree(vo);
+		return res;
+	}
 }
