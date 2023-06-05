@@ -26,18 +26,6 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	}
 	
 	@Override
-	public int inprogressFree(MyPjStatusVO vo) {
-		int res = mapper.inprogressFree(vo);
-		return res;
-	}
-	
-	@Override
-	public List<MyPjStatusVO> selectByClientInprogress(String user_id) {
-		List<MyPjStatusVO> inprogressPjNum = mapper.selectByClientInprogress(user_id);
-		return inprogressPjNum;
-	}
-	
-	@Override
 	public int modifyCompletedPj(int pj_num) {
 		int res = mapper.modifyCompletedPj(pj_num);
 		return res;
@@ -83,12 +71,6 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	public List<MyPjStatusVO> selectInprogressPj(String user_id) {
 		List<MyPjStatusVO> inprogresslist = mapper.selectInprogressPj(user_id);
 		return inprogresslist;
-	}
-
-	@Override
-	public List<MyPjStatusVO> selectApplyPj(String user_id) {
-		List<MyPjStatusVO> applylist = mapper.selectApplyPj(user_id);
-		return applylist;
 	}
 
 	@Override

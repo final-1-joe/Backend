@@ -31,21 +31,6 @@ public class MyPjStatusController {
 	}
 	//지원하기
 	
-	@PostMapping("/inprogress")
-	public int inprogressFree(MyPjStatusVO vo) {
-		int res = myPjStatusServiceImpl.inprogressFree(vo);
-		return res;
-	}
-	//제안하기
-	
-	@GetMapping("/auth/selectInprogresspj")
-	public List<MyPjStatusVO> selectByClientInprogress(String user_id) {
-		List<MyPjStatusVO> inprogressPjNum = myPjStatusServiceImpl.selectByClientInprogress(user_id);
-		return inprogressPjNum;
-	}
-	//제안할 때 내 프로젝트가 어떤 게 있는지 조회, int형으로만 여러 개 나올 수 있으니까 일단 List를 이용했습니다. 
-	//필요에 따라 고치셔도 상관 없습니다.
-	
 	@PostMapping("/auth/modifycompleted")
 	public int modifyCompletedPj(@RequestBody MyPjStatusVO vo) {
 		int res = myPjStatusServiceImpl.modifyCompletedPj(vo.getPj_num());
@@ -95,12 +80,6 @@ public class MyPjStatusController {
 	public List<MyPjStatusVO> selectInprogressPj(String user_id) {
 		List<MyPjStatusVO> inprogresslist = myPjStatusServiceImpl.selectInprogressPj(user_id);
 		return inprogresslist;
-	}
-
-	@GetMapping("/auth/applypj")
-	public List<MyPjStatusVO> selectApplyPj(String user_id) {
-		List<MyPjStatusVO> applylist = myPjStatusServiceImpl.selectApplyPj(user_id);
-		return applylist;
 	}
 
 	@GetMapping("/auth/finishedpj")

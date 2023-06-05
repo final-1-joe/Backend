@@ -19,14 +19,6 @@ public interface MyPjStatusMapper {
 	public int applyPj(MyPjStatusVO vo);
 	//지원하기를 누르면 status db에 지원자 데이터 생성
 	
-	@Insert("INSERT INTO pj_status_db(user_id,pj_num,pj_status,pj_status_date) VALUES (#{user_id},#{pj_num},'inprogress',CURDATE())")
-	public int inprogressFree(MyPjStatusVO vo);
-	//제안하기를 누르면 status db에 제안을 넣은 데이터 생성(프론트단에서 정보를 어떻게 받아오느냐가 관건이 될 것 같아요)
-	
-	@Select("SELECT pj_num FROM pj_status_db WHERE user_id=#{user_id} AND pj_status='inprogress'")
-	public List<MyPjStatusVO> selectByClientInprogress(@Param("user_id") String user_id);
-	//혹시 몰라서 만들어둡니다. 클라이언트가 모집중인 프로젝트의 pj_num 조회
-	
 	@Update("UPDATE pj_status_db SET pj_status='completed', pj_status_date=CURDATE() WHERE pj_num=#{pj_num}")
 	public int modifyCompletedPj(@Param("pj_num") int pj_num);
 	//모집마감 프로젝트로 상태 및 날짜 변경
@@ -55,7 +47,7 @@ public interface MyPjStatusMapper {
 	public List<MyPjStatusVO> selectOngoingPj(@Param("user_id") String user_id);
 	//진행중인 프로젝트 조회(클라이언트 입장)
 	
-	@Select("SELECT p.pj_num, p.pj_title, p.pj_corpname FROM project_db p JOIN pj_status_db s "
+	@Select("SELECT DISTINCT p.pj_num, p.pj_title, p.pj_corpname FROM project_db p JOIN pj_status_db s "
 			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id} AND s.pj_status='ongoing' OR s.pj_status='completed'")
 	public List<MyPjStatusVO> selectFreeOngoingPj(@Param("user_id") String user_id);
 	//진행중인 프로젝트, 제안 프로젝트를 승낙하면서 모집완료된 프로젝트 목록 조회(프리랜서 입장)
@@ -63,11 +55,6 @@ public interface MyPjStatusMapper {
 	@Select("SELECT p.pj_num, p.pj_title, p.pj_corpname FROM pj_status_db s JOIN project_db p "
 			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id} AND s.pj_status='inprogress'")
 	public List<MyPjStatusVO> selectInprogressPj(@Param("user_id") String user_id);
-	//제안받은 프로젝트 조회
-	
-	@Select("SELECT p.pj_num, p.pj_title, p.pj_corpname FROM pj_status_db s JOIN project_db p "
-			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id} AND s.pj_status='apply'")
-	public List<MyPjStatusVO> selectApplyPj(@Param("user_id") String user_id);
 	//지원한 프로젝트 조회
 	
 	@Select("SELECT p.pj_num, p.pj_title, p.pj_corpname FROM pj_status_db s JOIN project_db p "
