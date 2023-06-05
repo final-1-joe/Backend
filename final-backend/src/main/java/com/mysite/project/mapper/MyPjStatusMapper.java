@@ -41,6 +41,15 @@ public interface MyPjStatusMapper {
 	public int modifyFinishedPj(@Param("pj_num")int pj_num);
 	//완료 프로젝트로 상태 및 날짜 변경
 	
+	@Update("UPDATE pj_status_db SET pj_status='completed',pj_status_date = CURDATE() "
+			+ "WHERE user_id=#{user_id} AND pj_num=#{pj_num}")
+	public int updateCompletedFree(@Param("user_id") String user_id, @Param("pj_num")int pj_num);
+	//클라이언트가 승낙 버튼을 누르면 해당 프리랜서의 status가 모집완료인 completed로 변경되도록
+	
+	@Delete("DELETE FROM pj_status_db WHERE user_id=#{user_id} AND pj_num=#{pj_num}")
+	public int deletedFree(@Param("user_id")String user_id, @Param("pj_num")int pj_num);
+	//클라이언트가 거절 누르면 아예 지원 자체가 삭제되도록 구현
+	
 	@Select("SELECT p.pj_num, p.pj_title, p.pj_corpname FROM project_db p JOIN pj_status_db s "
 			+ "ON s.pj_num=p.pj_num WHERE s.user_id=#{user_id} AND s.pj_status='ongoing'")
 	public List<MyPjStatusVO> selectOngoingPj(@Param("user_id") String user_id);

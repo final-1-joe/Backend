@@ -56,6 +56,18 @@ public class MyPjStatusServiceImpl implements MyPjStatusService {
 	}
 	
 	@Override
+	public int updateCompletedFree(String user_id, int pj_num) {
+		int res = mapper.updateCompletedFree(user_id, pj_num);
+		return res;
+	}
+	
+	@Override
+	public int deletedFree(String user_id, int pj_num) {
+		int res = mapper.deletedFree(user_id, pj_num);
+		return res;
+	}
+	
+	@Override
 	public List<MyPjStatusVO> selectOngoingPj(String user_id) {
 		List<MyPjStatusVO> ongoinglist = mapper.selectOngoingPj(user_id);
 		return ongoinglist;

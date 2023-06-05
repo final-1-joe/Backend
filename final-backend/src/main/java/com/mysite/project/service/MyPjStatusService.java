@@ -12,6 +12,8 @@ public interface MyPjStatusService {
 	public int modifyCompletedPj(int pj_num);
 	public int modifyOngoingPj(int pj_num);
 	public int modifyFinishedPj(int pj_num);
+	public int updateCompletedFree(String user_id, int pj_num);
+	public int deletedFree(String user_id, int pj_num);
 	public List<MyPjStatusVO> selectOngoingPj(String user_id);
 	public List<MyPjStatusVO> selectFreeOngoingPj(String user_id);
 	public List<MyPjStatusVO> selectInprogressPj(String user_id);
