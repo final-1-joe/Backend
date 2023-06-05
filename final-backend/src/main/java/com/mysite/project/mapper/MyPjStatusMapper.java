@@ -80,7 +80,7 @@ public interface MyPjStatusMapper {
 	public List<MyPjStatusVO> selectPjByClient(@Param("user_id") String user_id);
 	//클라이언트 프로젝트관리 페이지에서 해당 클라이언트의 모든 프로젝트 상황 조회
 	
-	@Select("SELECT p.*, r.user_nm, j.pj_start, j.pj_end FROM pj_status_db p JOIN us_resume r ON p.user_id=r.user_id "
+	@Select("SELECT p.*, r.user_nm, j.pj_start, j.pj_end, j.pj_title, j.pj_content FROM pj_status_db p JOIN us_resume r ON p.user_id=r.user_id "
 			+ "JOIN project_db j ON p.pj_num = j.pj_num "
 			+ " WHERE p.user_id NOT IN (#{user_id}) and p.pj_num=#{pj_num}")
 	public List<MyPjStatusVO> selectFreeByClient(@Param("user_id") String user_id, @Param("pj_num") int pj_num);
