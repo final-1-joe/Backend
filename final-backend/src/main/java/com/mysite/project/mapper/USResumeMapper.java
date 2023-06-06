@@ -19,6 +19,8 @@ public interface USResumeMapper {
 
     public void updateUSR(USResumeVO usresume);
     
+    public void deleteUSR(USResumeVO usresume);
+    
     public int usjgCount(USResumeVO usresume);
 
 }

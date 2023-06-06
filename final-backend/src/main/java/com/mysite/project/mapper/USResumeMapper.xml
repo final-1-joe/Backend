@@ -116,4 +116,8 @@
       user_intro=#{user_intro}
      WHERE user_id=#{user_id}
 	</update>
+	 <delete id="deleteUSR" parameterType="com.mysite.project.vo.USResumeVO">
+        DELETE FROM us_resume
+        WHERE user_id = #{user_id}
+    </delete>
 </mapper>
