@@ -50,4 +50,10 @@ public class USResumeServiceImpl implements USResumeService {
 		return usrmapper.USRTag(usresume);
 	}
 
+	@Override
+	public void delete(USResumeVO usresume) {
+		usrmapper.deleteUSR(usresume);
+		
+	}
+
 }

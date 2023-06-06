@@ -59,6 +59,11 @@ public class USResumeController {
 	    this.usresumeService.update(usresume);
 	}
 	
+	@RequestMapping("/delete")
+	public void delete(@RequestBody USResumeVO usresume) {
+	    this.usresumeService.delete(usresume);
+	}
+	
 	@PostMapping("/usjgcount")
 	public int usjgCount(@RequestBody USResumeVO usresume) {
 	    return this.usresumeService.usjgCount(usresume);
