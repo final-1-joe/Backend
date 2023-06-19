@@ -17,6 +17,7 @@ public class ProjectVO {
 	private String pj_place;
 	private String pj_work_form;
 	private String pj_job;
+	private String pj_level;
 	private String pj_skill;
 	private int pj_pick;
 	private String pj_period;

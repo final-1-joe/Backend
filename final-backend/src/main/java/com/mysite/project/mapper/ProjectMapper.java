@@ -37,14 +37,14 @@ public interface ProjectMapper {
 	public List<ProjectVO> projectTag(ProjectVO project);
 	
 	@Insert("insert into project_db(pj_title, pj_corpname, pj_work_form, pj_place, pj_start, pj_period, "
-			+ "pj_job, pj_pay, pj_end, pj_day, pj_pick, pj_skill, pj_content, pj_date, user_id) "
+			+ "pj_job, pj_level pj_pay, pj_end, pj_day, pj_pick, pj_skill, pj_content, pj_date, user_id) "
 			+ "values(#{pj_title}, #{pj_corpname}, #{pj_work_form},  #{pj_place}, #{pj_start}, #{pj_period}, "
-			+ "#{pj_job}, #{pj_pay}, #{pj_end}, #{pj_day}, #{pj_pick}, #{pj_skill}, #{pj_content}, now(), #{user_id})")
+			+ "#{pj_job}, #{pj_level}, #{pj_pay}, #{pj_end}, #{pj_day}, #{pj_pick}, #{pj_skill}, #{pj_content}, now(), #{user_id})")
 	public int insertProject(ProjectVO project);
 	
 	@Update("update project_db set pj_title=#{pj_title}, pj_content=#{pj_content}, pj_date=now(), "
 			+ "pj_pay=#{pj_pay}, pj_start=#{pj_start}, pj_end=#{pj_end}, pj_day=#{pj_day}, pj_place=#{pj_place}, pj_work_form=#{pj_work_form}, "
-			+ "pj_job=#{pj_job}, pj_skill=#{pj_skill}, pj_pick=#{pj_pick}, pj_period=#{pj_period} where pj_num=#{pj_num}")
+			+ "pj_job=#{pj_job}, pj_level=#{pj_level}, pj_skill=#{pj_skill}, pj_pick=#{pj_pick}, pj_period=#{pj_period} where pj_num=#{pj_num}")
 	public int updateProject(ProjectVO project);
 	
 	@Delete("delete from project_db where pj_num=#{pj_num}")
